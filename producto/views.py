@@ -1,3 +1,14 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 # Create your views here.
+
+def base(request):
+    return render(request, "templateHTML/Base.html")
+
+def home(request):
+    return render(request, "templateHTML/Home/Home.html")
+
+def producto(request):
+    return render(request, "templateHTML/Producto/Producto.html")
+
