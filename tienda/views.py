@@ -6,6 +6,9 @@ from .models import Producto
 def home(request):
     return render(request, "templateHTML/Home/Home.html")
 
+def bodega(request):
+    return render(request, "templateHTML/Bodega/Bodega.html")
+
 def producto(request):
     productos = Producto.objects.all()
     data = {

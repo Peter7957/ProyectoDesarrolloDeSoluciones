@@ -26,6 +26,7 @@ urlpatterns = [
     path('', admin.site.urls),
     #path('', views.home),
     path('Producto/', views.producto),
+    path('Bodega/', views.bodega),
 ]
 
 if settings.DEBUG:
