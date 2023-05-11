@@ -1,22 +1,31 @@
 {% extends '../Base.html' %}
-
+{% load static %}
 {% block content     %}
     <table border>
+        <!--titupo de mi tabla toda fea-->
         <tr>
         <th>Nombre</th>
-        <th>Descripcion</th>
-        <th>Imagen</th>
         <th>Cantidad</th>
-        <th>Modelo</th>
+        <th>Marca</th>
         <th>Precio</th>
+        <th>Imagen</th>
+        <th>Carrito</th>
+        <th>Comprar</th>
         </tr>
+        <!-- lineas que se reperiran hasta que se aburra-->
+
+        {% for p in productos %}
         <tr>
-        <td>dato</td>
-        <td>dato</td>
-        <td>dato</td> 
-        <td>dato</td> 
-        <td>dato</td> 
-        <td>dato</td> 
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.cantidad }}</td>
+            <td>{{ p.marca }}</td>
+            <td>{{ p.precio }}</td>
+            <td>
+                <img src="{{ p.imagen.url }}" width="30px" height="30px">
+                
+            </td>
         </tr>
+        {% endfor %}
+        
     </table>
 {% endblock content  %}
