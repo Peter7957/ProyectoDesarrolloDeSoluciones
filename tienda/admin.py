@@ -10,4 +10,6 @@ class ProductoAdmin(admin.ModelAdmin):
     list_per_page   = 5
 
 admin.site.register(Marca)
-admin.site.register(Producto, ProductoAdmin)
+admin.site.register(Aro)
+admin.site.register(Genero)
+admin.site.register(Producto,ProductoAdmin)
