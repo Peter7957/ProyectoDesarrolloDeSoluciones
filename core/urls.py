@@ -24,8 +24,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('', views.home, name="Home"),
     path('Producto/', views.producto, name="Producto"),
+=======
+    path('', views.home),
+    path('Producto/', views.producto),
+    path('Detalles/<int:producto_id>/', views.detalles, name='detalles'),
+>>>>>>> pedro
     path('Bodega/', views.bodega),
 ]
 
