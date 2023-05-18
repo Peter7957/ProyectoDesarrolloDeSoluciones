@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Elige-tu-bici</title>
 </head>
 <body>
 <header>
@@ -16,11 +16,8 @@
           <a class="navbar-brand" href="#"></a>
           <div class="collapse navbar-collapse d-flex justify-content-center " id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-              <a class="nav-link" href="pages/quienes_somos.html">Quienes Somos</a>
-              <a class="nav-link" href="pages/servicios.html">Servicios</a>
-              <a class="nav-link" href="pages/galeria.html">Galeria</a>
-              <a class="nav-link" href="pages/contacto.html">Contacto</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Inicio</a>
+              <a class="nav-link" href="{% url 'Producto' %}">Producto</a>
             </div>
           </div>
         </div>

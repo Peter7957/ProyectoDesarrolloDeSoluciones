@@ -8,10 +8,6 @@ class Marca(models.Model):
     ##Me permite ver el nombre cuando registre algo en el admin de django
     def __str__(self):
         return self.nombre
-<<<<<<< HEAD
-=======
-
->>>>>>> pedro
 class Aro(models.Model):    
     Aro = models.CharField(max_length=5)
     
@@ -36,9 +32,4 @@ class Producto(models.Model):
     imagen = models.ImageField(upload_to="productos", null=True)
 
     def __str__(self):
-<<<<<<< HEAD
         return self.nombre
-=======
-        return self.nombre
-
->>>>>>> pedro
