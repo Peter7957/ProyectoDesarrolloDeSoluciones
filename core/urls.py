@@ -16,9 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from producto import views
+from tienda import views
+
+#metodo para guardar imagenes, solo sirve en DEBUG
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("Home/", views.Home)
+    path('', views.home),
+    path('Producto/', views.producto),
+    path('Detalles/<int:producto_id>/', views.detalles, name='detalles'),
+    path('Bodega/', views.bodega),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
