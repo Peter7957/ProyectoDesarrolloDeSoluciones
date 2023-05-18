@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'tienda/Css/style.css' %}">
     <title>eligetubici</title>
 </head>
 <body>
@@ -35,9 +37,9 @@
               <div class="container-fluid">
                 <a class="navbar-brand" href="#"></a>
                 <div class="collapse navbar-collapse d-flex justify-content-center justify-content-evenly" id="navbarNavAltMarkup">
-                    <a class="nav-link" target="_blanck" href="https://web.whatsapp.com/"><img src="img/wsp.png" alt="Logo" style="width: 50px ;height: 50px "></a>
-                    <a class="nav-link" target="_blanck" href="https://www.instagram.com/eligetubici/"><img src="img/insta.png" alt="Logo" style="width: 50px ;height: 50px "></a>
-                    <a class="nav-link" href="mailto:eligetubici123@gmail.com?subject=contacto&body=Agendar Hora'"><img src="img/correo.png" alt="Logo" style="width: 50px ;height: 50px "></a>
+                    <a class="nav-link" target="_blanck" href="https://web.whatsapp.com/"><img src="{% static 'tienda/img/wsp.png' %}" alt="Logo" style="width: 50px ;height: 50px "></a>
+                    <a class="nav-link" target="_blanck" href="https://www.instagram.com/eligetubici/"><img src="{% static 'tienda/img/insta.png' %}" alt="Logo" style="width: 50px ;height: 50px "></a>
+                    <a class="nav-link" href="mailto:eligetubici123@gmail.com?subject=contacto&body=Agendar Hora'"><img src="{% static 'tienda/img/correo.png' %}" alt="Logo" style="width: 50px ;height: 50px "></a>
                   </div>
                 </div>
               </div>
