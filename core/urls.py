@@ -28,6 +28,10 @@ urlpatterns = [
     path('Producto/', views.producto, name="Producto"),
     path('Detalles/<int:producto_id>/', views.detalles, name='detalles'),
     path('Bodega/', views.bodega),
+    path('Agregar-Producto/', views.agregar_producto, name='agregar_producto'),
+    path('Listar-Producto/', views.listar_productos, name='listar_productos'),
+    path('Modificar-Producto/<id>/', views.modificar_producto, name='modificar_producto'),
+    path('ELiminar-Producto/<id>/', views.eliminar_producto, name='eliminar_producto'),
 ]
 
 if settings.DEBUG:

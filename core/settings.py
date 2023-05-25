@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# = "django.contrib.messages.storage.cookie.CokkieStorage"
+
 
 # Application definition
 

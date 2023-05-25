@@ -1,38 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import Producto
-# views.py
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
-
-def login_view(request):
-    if request.method == 'POST':
-        Usuario = request.POST['Usuario']
-        Contraseña = request.POST['Contraseña']
-        user = authenticate(request, Usuario=Usuario, Contraseña=Contraseña)
-        if Usuario is not None:
-            login(request, user)
-            return redirect('home')  # Redirige a la página de inicio
-        else:
-            error_message = 'Usuario o contraseña incorrecta.'
-            return render(request, 'login.html', {'error_message': error_message})
-    else:
-        return render(request, 'login.html')
-
-def signup_view(request):
-    if request.method == 'POST':
-        Usuario = request.POST['Usuario']
-        Contraseña = request.POST['Contraseña']
-        confirme_Contraseña = request.POST['confirme_Contraseña']
-        if Contraseña == confirme_Contraseña:
-            Usuario = Usuario.objects.create_user(Usuario=Usuario, Contraseña=Contraseña)
-            login(request, Usuario)
-            return redirect('home')  # Redirige a la página de inicio
-        else:
-            error_message = 'Contraseña incorrecta.'
-            return render(request, 'signup.html', {'error_message': error_message})
-    else:
-        return render(request, 'signup.html')
+from .forms import ProductoForm
 
 
 # Create your views here.
@@ -55,6 +23,50 @@ def detalles(request, producto_id):
     #INVESTIGAR ACERCA DE ESTA OPCION
     #producto = get_object_or_404(Producto, id=producto_id)
     producto = Producto.objects.get(id=producto_id)
-    print(producto)
+    data = {'producto' : producto}
     
-    return render(request, "templateHTML/Producto/Detalles.html", {'producto' : producto})
+    return render(request, "templateHTML/Producto/Detalles.html", data)
+
+def agregar_producto(request):
+    
+    data = {
+        'form' : ProductoForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "guardado correctamente"
+        else:
+            data["form"] = formulario
+            data["mensaje"] = "Error"
+    return render(request, "templateHTML/Admin/Agregar.html", data)
+
+def listar_productos(request):
+    producto = Producto.objects.all()
+    data = {
+        "producto" : producto
+    }
+    return render(request, "templateHTML/Admin/Listar.html", data)
+
+def modificar_producto(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    data = {
+        'form' : ProductoForm(instance=producto)
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="listar_productos")
+        else:
+            data["form"] = formulario
+            data["mensaje"] = "Error"
+    return render(request, "templateHTML/Admin/Modificar.html", data)
+
+def eliminar_producto(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    producto.delete()
+    return redirect(to="listar_productos")
