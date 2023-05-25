@@ -28,8 +28,18 @@ header nav {
   box-shadow: rgba(67, 223, 223, 0.674) 0px 19px 38px, rgba(0, 0.22) 0px 15px 12px;
 }
 
+.Logeo {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  margin-top: 1px;
+  background-color:rgba(133, 110, 133, 0.278);
+}
+
 .pservicios {
   font-size: 25px;
+  background-color:rgba(133, 110, 133, 0.278);
 }
 
 .caja1:hover{
