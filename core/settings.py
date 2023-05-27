@@ -15,7 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-template = os.path.join(BASE_DIR, "template")
+template = os.path.join(BASE_DIR, "templates")
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,6 +30,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # = "django.contrib.messages.storage.cookie.CokkieStorage"
+
+
+#url de redireecion donde se derigira cuando se loguee el usuario
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Application definition
