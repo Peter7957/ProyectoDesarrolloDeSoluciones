@@ -8,66 +8,42 @@
 <html>
 </br>
 <head>
+</head>
 <body>
-<div class="row">
+    <main>
+    <div class="row">
       <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
-        <h4 id="simple-list-item-1">Categorias</h4>
+        <h4 class="d-flex justify-content-center simple-list-item-1">Categorias</h4>
         <p><h2>Bicicletas</h2></p>
         <div class='imgHome'>
-        <div>   
-            <img src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen1">
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen2">   
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen3">  
-                <p><h4>Descripcion</h4></p>
-         </div>
-        </div>
-        <div>   
-            <img src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen4">
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen5">   
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen6">  
-                <p><h4>Descripcion</h4></p>
-         </div>
-        </div>
-        <div>   
-            <img src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen7">
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen8">   
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen9">  
-                <p><h4>Descripcion</h4></p>
-         </div>
-        </div>
-        <div>   
-            <img src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen10">
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen11">   
-                <p><h4>Descripcion</h4></p>
-        </div>
-        <div> 
-            <img src="{% static 'tienda/img/Oxford Aro 29 Orion 4 202210 299.990.jpg' %}" alt="imagen12">  
-                <p><h4>Descripcion</h4></p>
-         </div>
-        </div>
+            <section class="d-flex justify-content-center "> 
+                <br/>
+              </section>
+              <section class="container"> 
+                  <div class=" row"> 
+                    <img class="col-md-4" src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
+                    <img class="col-md-4" src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
+                    <img class="col-md-4" src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
+                </div>
+                <div class=" row"> 
+                    <div class="col-md-4"> <p>Descripcion:</p> </div>
+                    <div class="col-md-4"> <p>Descripcion:</p> </div>
+                    <div class="col-md-4"> <p>Descripcion:</p> </div>
+                </div>
+            </br>
+                  <div class="row"> 
+                    <img class="col-md-4" src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
+                    <img class="col-md-4" src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
+                    <img class="col-md-4" src="{% static 'tienda/img/ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
+                  </div>
+                  <div class=" row"> 
+                    <div class="col-md-4"> <p>Descripcion:</p> </div>
+                    <div class="col-md-4"> <p>Descripcion:</p> </div>
+                    <div class="col-md-4"> <p>Descripcion:</p> </div>
+                </div>
+                </section>   
     </br>
-</head>
+
 
         <h4 id="simple-list-item-2">Nuevos</h4>
         <p><h2> </h2></p>
@@ -116,6 +92,7 @@
         {% endfor %}
         
     </table>
+</main>
 </body>
 </html>
 {% endblock content  %}
