@@ -16,9 +16,10 @@
       <h3 class="d-flex justify-content-center m-2">Elige tu bicicleta</h3>
     </div>
     <ul class="nav nav-tabs">
-      <li class="nav-item">  
-        <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Inicio</a>
+      <li id="NavInicio" class="nav-item">  
+        <a class="nav-link 1 " aria-current="page" href="{% url 'Home' %}">Inicio</a>
       </li> 
+    <div class="Nav2">  
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{% url 'Producto' %}">Productos</a>
         <ul class="dropdown-menu">
@@ -36,6 +37,8 @@
           </div>
         </ul>
       </li>
+    </div>
+        <div id="Nav3" class="nav nav-tabs">
         <a class="nav-link" aria-current="page" href="{% url 'agregar_producto' %}">Agregar</a>
         <a class="nav-link" aria-current="page" href="{% url 'listar_productos' %}">Listar</a>
         <a class="nav-link" aria-current="page" href="{% url 'registro' %}">Registrarse</a>
@@ -46,6 +49,7 @@
         {% else %}
         <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
         {% endif %}
+        </div>
         </div>
         </div>
         </div>
@@ -64,7 +68,7 @@
     
     <footer>
       <section class="footer ">
-          <h4 class="m-2 bg-primary">Contactenos</h4>
+          <h4 class="m-2 ">Contactenos</h4>
           <nav class="navbar navbar-expand-lg navbar-dark">
               <div class="container-fluid">
                 <a class="navbar-brand" href="#"></a>
