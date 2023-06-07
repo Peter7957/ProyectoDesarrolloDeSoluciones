@@ -32,6 +32,7 @@ urlpatterns = [
     path('Producto/', views.producto, name="Producto"),
     path('Detalles/<int:producto_id>/', views.detalles, name='detalles'),
     path('Bodega/', views.bodega),
+    path('Cliente/', views.cliente, name='Cliente'),
 
     #Rutas para el Crud que tendra django (Actualemente pueden tener cambios segun se requiera)
     path('Agregar-Producto/', views.agregar_producto, name='agregar_producto'),
@@ -43,6 +44,7 @@ urlpatterns = [
     #se importa directamente de 'django.contrib.auth.urls' 
     path('accounts/', include('django.contrib.auth.urls')),
     path('Registro/', views.registro, name='registro'),
+    path('login/', views.LoginCustom.as_view(), name='login'),
 ]
 
 if settings.DEBUG:

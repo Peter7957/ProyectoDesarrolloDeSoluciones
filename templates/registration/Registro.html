@@ -11,12 +11,30 @@
     <hr>    
     <form action="" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
+
+
+
+        {% if form.errors %}
+            <div class="errors">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
         
         <a href="{% url 'Home' %}">Home</a> |
         <a href="{% url 'login' %}"> Inicio de sesión</a>
         
         <input type="submit" value="Registrar">
+
+        
     </form>
+    
 </body>
 </html>
