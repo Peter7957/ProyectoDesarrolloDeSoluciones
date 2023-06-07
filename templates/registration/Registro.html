@@ -1,3 +1,8 @@
+{% extends '../Base.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +40,54 @@
 
         
     </form>
-    
+    =========================================================================
+    <main>
+        <section class="container-fluid d-flex align-items-center">
+              <article class="col-md-10 ms-3 ">
+                <form class="row g-3">
+                  <div class="col-md-6">
+                    <label for="inputNombre" class="form-label">Nombre</label>
+                    <input type="email" class="form-control" id="inputNombre" placeholder="Nombre">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputnumero" class="form-label">Telefono</label>
+                    <input type="password" class="form-control" id="inputnumero" placeholder="+569">
+                  </div>
+                  <div class="col-8">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="@gmail.com">
+                  </div>
+                  <div class="col-8">
+                    <label for="inputDirección" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Dirección">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputCiudad" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" id="inputCiudad" placeholder="Ciudad">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputComuna" class="form-label">Comuna</label>
+                    <select id="inputState" class="form-select">
+                      <option selected>Buscar...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+                  <div class="col-8">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="gridCheck">
+                      <label class="form-check-label" for="gridCheck">
+                        Confirmar
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                  </div>
+                </form>
+              </article>
+                </div>
+        </section>
+      </main>
 </body>
 </html>
+{% endblock content  %}

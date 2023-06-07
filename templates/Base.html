@@ -5,36 +5,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'tienda/css/Style.css' %}">
     <title>eligetubici</title>
-</head>
-<body>
+    <link rel="shortcut icon" href="{% static 'tienda/img/icono.webp' %}"type="imafe/x-icon"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'tienda/css/Style.css'%}">
+  </head>
 <header>
-    <div class="Primerh3">  
+<body>
+
+    <div class="Nav1">  
       <h3 class="d-flex justify-content-center m-2">Elige tu bicicleta</h3>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#"></a>
-          <div class="collapse navbar-collapse d-flex justify-content-center " id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Inicio</a>
-              <a class="nav-link" href="{% url 'Producto' %}">Producto</a>
-              <a class="nav-link" href="{% url 'agregar_producto' %}">Agregar</a>
-              <a class="nav-link" href="{% url 'listar_productos' %}">Listar</a>
-              <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
-
-              {% if user.is_authenticated %}
-              <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
-              <a class="nav-link" href="#">{{ user.username}}</a>
-              {% else %}
-              <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
-              {% endif %}
+    <ul class="nav nav-tabs ">
+      <li id="NavInicio" class="nav-item">  
+        <a class="nav-link 1 " aria-current="page" href="{% url 'Home' %}">Inicio</a>
+      </li> 
+    <div class="Nav2">  
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{% url 'Producto' %}">Productos</a>
+        <ul class="dropdown-menu">
+          <div class="col-4">
+            <div id="simple-list-example" class="d-flex flex-column gap-2 simple-list-example-scrollspy text-center">
+              <a class="p-1 rounded" aria-current="page" href="{% url 'Producto' %}""#simple-list-item-1">Categorias</a>
+              <a class="p-1 rounded" href="#simple-list-item-2">Nuevos</a>
+              <a class="p-1 rounded" href="#simple-list-item-3">Marca</a>
+              <a class="p-1 rounded" href="#simple-list-item-4">Modelo</a>
+              <a class="p-1 rounded" href="#simple-list-item-5">Genero</a>
+              <a class="p-1 rounded" href="#simple-list-item-6">Aro</a>
+              <a class="p-1 rounded" href="#simple-list-item-7">Frenos</a>
+              <a class="p-1 rounded" href="#simple-list-item-8">Descuentos</a>
             </div>
           </div>
+        </ul>
+      </li>
+    </div>
+        <div id="Nav3" class="nav nav-tabs">
+        <a class="nav-link" aria-current="page" href="{% url 'agregar_producto' %}">Agregar</a>
+        <a class="nav-link" aria-current="page" href="{% url 'listar_productos' %}">Listar</a>
+        <a class="nav-link" aria-current="page" href="{% url 'registro' %}">Registrarse</a>
+    
+        {% if user.is_authenticated %}
+        <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+        <a class="nav-link" href="#">{{ user.username}}</a>
+        {% else %}
+        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
+        {% endif %}
+        </div>
+        </div>
+        </div>
         </div>
       </nav>
-    </header>
+    </ul> 
+  </header>
 
     <main id="Logeo"><!-- login.html -->
       <!-- Se elimino el login hecho en Base.html debido a que se creo usando las practicas de Django -->
@@ -47,14 +69,14 @@
     
     <footer>
       <section class="footer ">
-          <h4 class="m-2 bg-primary">Contactenos</h4>
+          <h4 class="m-2 ">Contactenos</h4>
           <nav class="navbar navbar-expand-lg navbar-dark">
               <div class="container-fluid">
                 <a class="navbar-brand" href="#"></a>
                 <div class="collapse navbar-collapse d-flex justify-content-center justify-content-evenly" id="navbarNavAltMarkup">
-                    <a class="nav-link" target="_blanck" href="https://web.whatsapp.com/"><img src="{% static 'tienda/img/wsp.png' %}" alt="Logo" style="width: 50px ;height: 50px "></a>
-                    <a class="nav-link" target="_blanck" href="https://www.instagram.com/eligetubici/"><img src="{% static 'tienda/img/insta.png' %}" alt="Logo" style="width: 50px ;height: 50px "></a>
-                    <a class="nav-link" href="mailto:eligetubici123@gmail.com?subject=contacto&body=Agendar Hora'"><img src="{% static 'tienda/img/correo.png' %}" alt="Logo" style="width: 50px ;height: 50px "></a>
+                  <a class="nav-link" target="_blanck" href="https://web.whatsapp.com/"><img src="{% static 'tienda/img/wsp.png' %}" alt="Logo" style="width: 50px ;height: 50px "></#a>
+                  <a class="nav-link" target="_blanck" href="https://www.instagram.com/eligetubici/"><img src="{% static 'tienda/img/insta.png' %}" alt="Logo" style="width: 50px ;height: 50px "></#a>
+                  <a class="nav-link" href="mailto:eligetubici123@gmail.com?subject=contacto&body=Agendar Hora'"><img src="{% static 'tienda/img/correo.png' %}" alt="Logo" style="width: 50px ;height: 50px "></#a>
                   </div>
                 </div>
               </div>
@@ -72,8 +94,6 @@
             </nav>    
       </section>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" 
-              integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
