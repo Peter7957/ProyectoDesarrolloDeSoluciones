@@ -1,10 +1,6 @@
 header {
     background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 70%);
 }
-#imgPrincipal{
-    width: 500px; 
-    height: 500px; 
-    }
 #NavInicio a:hover {
     background-color:rgba(41, 176, 214, 0.964);
 }
