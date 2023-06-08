@@ -7,6 +7,16 @@ header {
 .Nav2 a:hover {
     background-color:rgba(41, 176, 214, 0.964);
 }
+#color {
+    color: rgb(195, 221, 227);
+    background-color: rgb(66, 152, 195);
+}
+#fondo1 {
+    background-color: rgb(16, 103, 157);
+}
+#fondo2 {
+    background-color: rgb(16, 103, 157);
+}
 #Nav3 a:hover {
     background-color:rgba(41, 176, 214, 0.964);
 }
