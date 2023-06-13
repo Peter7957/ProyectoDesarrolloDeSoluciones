@@ -24,6 +24,9 @@ def bodega(request):
 def cliente(request):
     return render(request, "Cliente/Cliente.html")
 
+def administrador(request):
+    return render(request, "Admin/Administrador.html")
+
 def producto(request):
     productos = Producto.objects.all()
     data = {
@@ -109,12 +112,12 @@ class LoginCustom(LoginView):
         custom_user = self.request.user
         if hasattr(custom_user, 'perfil'): 
             if custom_user.perfil == 'administrador':
-                return '/admin/'
+                return '/Administrador/'
             elif custom_user.perfil == 'cliente':
                 return '/Cliente/'
             elif custom_user.perfil == 'bodeguero':
-                return '/Bodeguero/'
-        return '/Bodeguero'
+                return '/Bodega/'
+        return '/'
         
     
     #def form_valid(self, form):

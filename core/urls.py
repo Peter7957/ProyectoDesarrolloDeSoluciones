@@ -33,6 +33,7 @@ urlpatterns = [
     path('Detalles/<int:producto_id>/', views.detalles, name='detalles'),
     path('Bodega/', views.bodega),
     path('Cliente/', views.cliente, name='Cliente'),
+    path('Administrador/', views.administrador, name='Admin'),
 
     #Rutas para el Crud que tendra django (Actualemente pueden tener cambios segun se requiera)
     path('Agregar-Producto/', views.agregar_producto, name='agregar_producto'),

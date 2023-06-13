@@ -19,14 +19,14 @@ class CustomUserCreationForm(UserCreationForm):
         ('bodeguero', 'Bodeguero'),
     ), initial='cliente')#, widget=forms.HiddenInput())
 
-    staff = forms.BooleanField(label='Staff', required=False)
+    #staff = forms.BooleanField(label='Staff', required=False)
 
 
     class Meta:
         model = CustomUser
         fields = ["username",
         # "first_name", "last_name", "email"
-        "password1", "password2", "perfil", "staff"]
+        "password1", "password2", "perfil"]
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)

@@ -1,7 +1,11 @@
 {% extends '../Base.html' %}
 {% load static %}
-{% block css %}
-{% endblock %}
+<!--
+
+    {% block css %}
+    {% endblock %}
+    
+-->
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,25 +16,38 @@
     <title>Document</title>
 </head>
 <body>
+
     <h1>Ingresar Datos</h1>
     <hr> 
-<h5>¿No tienes cuenta? <a id="color2" href="{% url 'registro' %}">Haz click aquí para crear una.</h5>
+    <!-- Recuerda cerrar las etiquetas estube weando por que cualquier cosa me tiraba para registro -->
+    <h5>¿No tienes cuenta? <a id="color2" href="{% url 'registro' %}"></a> click aquí para crear una.</h5>
    
-<div>    
-    <label id="color2" for="email">Correo electrónico:</label>
 
-    <input type="email" name="email" required>
-            <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+    <!--
+
+        <label id="color2" for="email">Correo electrónico:</label>
+
+        <input type="email" name="email" required>
+                <br>
+            
+        <label id="color2" for="password">Contraseña:</label>
         
-    <label id="color2" for="password">Contraseña:</label>
-    
-    <input type="password" name="password" required>
-                
-    <br>
+        <input type="password" name="password" required>
+                    
+        <br>
+
+    -->
+    <div>    
         
-    <input type="submit" value="Iniciar sesión">
-    <a id="color2" href="{% url 'Home' %}"> O Volver a la Tienda</a>   
-</div>   
+            
+        <input type="submit" value="Iniciar sesión">
+
+        <a id="color2" href="{% url 'Home' %}"> O Volver a la Tienda</a>   
+    </div>   
 </form>
 </body>
 </html>
