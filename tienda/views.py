@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Producto, CustomUser
 from .forms import ProductoForm , CustomUserCreationForm
-from .carrito import carrito
+from .carrito import Carrito
 from django.contrib import messages
 
 
@@ -92,28 +92,26 @@ def eliminar_producto(request, id):
 
 #CRUD Carrito
 def agregar_producto_carrito(request, producto_id):
-
-    carrito = carrito(request)
+    carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.agregar(producto)
     return redirect("Producto")
     
 def eliminar_producto_carrito(request, producto_id):
-    carrito = carrito(request)
+    carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.eliminar(producto)
     return redirect("Producto")
 
 def restar_producto_carrito(request, producto_id):
-    carrito = carrito(request)
+    carrito = Carrito(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.restar(producto)
     return redirect("Producto")
 
-def limpiar_producto_carrito(request, producto_id):
-    carrito = carrito(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.limpiar(producto)
+def limpiar_producto_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
     return redirect("Producto")
 
 
