@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Producto, CustomUser
 from .forms import ProductoForm , CustomUserCreationForm
+from .carrito import carrito
 from django.contrib import messages
 
 
@@ -13,8 +14,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .models import CustomUser
 
-# Create your views here.
-
+#Rutas 
 def home(request):
     return render(request, "Home/Home.html")
 
@@ -43,7 +43,10 @@ def detalles(request, producto_id):
     
     return render(request, "Producto/Detalles.html", data)
 
+
+#CRUD Administrador 
 def agregar_producto(request):
+
     
     data = {
         'form' : ProductoForm()
@@ -87,6 +90,34 @@ def eliminar_producto(request, id):
     producto.delete()
     return redirect(to="listar_productos")
 
+#CRUD Carrito
+def agregar_producto_carrito(request, producto_id):
+
+    carrito = carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("Producto")
+    
+def eliminar_producto_carrito(request, producto_id):
+    carrito = carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("Producto")
+
+def restar_producto_carrito(request, producto_id):
+    carrito = carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("Producto")
+
+def limpiar_producto_carrito(request, producto_id):
+    carrito = carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.limpiar(producto)
+    return redirect("Producto")
+
+
+#Registros e Inicio de sesión
 def registro(request):
     data = {
         'form' : CustomUserCreationForm()
@@ -106,7 +137,6 @@ def registro(request):
 class LoginCustom(LoginView):
     template_name = 'registration/login.html'
 
-
     def get_success_url(self):
         custom_user = CustomUser.objects.get(username=self.request.user.username)
         custom_user = self.request.user
@@ -119,24 +149,3 @@ class LoginCustom(LoginView):
                 return '/Bodega/'
         return '/'
         
-    
-    #def form_valid(self, form):
-    #    if not self.request.user.is_active:
-    #        return redirect('inactive-account')
-    #    return super().form_valid(form)
-
-#class CustomUserCreationView(CreateView):
-#    template_name = 'registration/Registro.html'
-#    model = CustomUser
-#    form_class = CustomUserCreationForm
-#    
-#
-#    def get_success_url(self):
-#        success_url = super().get_success_url()
-#        print(success_url)
-#        return success_url
-#    
-#    def form_valid(self, form):
-#        response = super().form_valid(form)
-#        messages.success(self.request, 'Conexión exitosa. ¡Bienvenido!')
-#        return response

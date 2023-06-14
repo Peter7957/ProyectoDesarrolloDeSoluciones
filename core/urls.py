@@ -41,6 +41,12 @@ urlpatterns = [
     path('Modificar-Producto/<id>/', views.modificar_producto, name='modificar_producto'),
     path('Eliminar-Producto/<id>/', views.eliminar_producto, name='eliminar_producto'),
 
+    #Rutas para el Crud que tendra django (Actualemente pueden tener cambios segun se requiera)
+    path('Agregar/<int:producto_id>/', views.agregar_producto_carrito, name='agregar_producto_carrito'),
+    path('Restar/<int:producto_id>/', views.restar_producto_carrito, name='restar_producto_carrito'),
+    path('Limpiar/', views.limpiar_producto_carrito, name='limpiar_producto_carrito'),
+    path('Eliminar/<int:producto_id>/', views.eliminar_producto_carrito, name='eliminar_producto_carrito'),
+
     #Ruta para el Login (este esta conectado con la ruta templates/login.html) y no require de views.py 
     #se importa directamente de 'django.contrib.auth.urls' 
     path('accounts/', include('django.contrib.auth.urls')),

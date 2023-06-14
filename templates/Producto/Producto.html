@@ -10,6 +10,7 @@
 <head>
 </head>
 <body>
+  <!--
     <main>
     <div class="row">
       <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
@@ -405,6 +406,9 @@
               </div>
             </div>
     </div>
+
+
+    -->
     <table border>
         <!--titupo de mi tabla toda fea-->
         <tr>
@@ -429,13 +433,16 @@
                 <img src="{{ p.imagen.url }}" width="30px" height="30px">
                 
             </td>
-            <td><a href="{% url "detalles" producto_id=p.id %}">hola</a></td>
+            <td><a href="{% url 'detalles' producto_id=p.id %}">hola</a></td>
+            <td><a href="{% url 'agregar_producto_carrito' p.id %}"><button>Carrito</button></a></td>
 
         </tr>
         {% endfor %}
         
     </table>
+    {% include "./Carrito.html" %}
 </main>
+
 </body>
 </html>
 {% endblock content  %}
