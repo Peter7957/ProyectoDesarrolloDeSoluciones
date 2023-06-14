@@ -17,7 +17,7 @@ class CustomUserCreationForm(UserCreationForm):
         ('cliente', 'Cliente'),
         ('administrador', 'Administrador'),
         ('bodeguero', 'Bodeguero'),
-    ), initial='cliente')#, widget=forms.HiddenInput())
+    ), initial='cliente', widget=forms.HiddenInput())
 
     #staff = forms.BooleanField(label='Staff', required=False)
 

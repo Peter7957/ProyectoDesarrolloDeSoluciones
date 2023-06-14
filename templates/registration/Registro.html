@@ -18,8 +18,13 @@
   </div>
 
   <div class="slider">
-    <form action="/customer/register" method="post">
+    <form action="" method="post">
       <fieldset>
+
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!--
         <p class="radios">
           <label>Tipo de cuenta</label>
 
@@ -50,7 +55,7 @@
           <label for="user_company_id_number">RUT Empresa <span class="required">(Requerido)</span></label>
           <input required="" disabled="" tabindex="5" type="text" name="company_id_number" id="user_company_id_number" value="">
         </div>
-
+        -->
 
         <p class="submit">
           <input class="primary" type="submit" value="Registrarse" tabindex="6">
@@ -83,8 +88,7 @@
 </body
 </html>
 
-        {% csrf_token %}
-        {{ form.as_p }}
+        
 
     
 {% endblock content  %}
