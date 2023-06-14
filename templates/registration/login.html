@@ -3,35 +3,51 @@
 {% block css %}
 {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <link rel="stylesheet" href="https://assets.btcdn.co/res/css/customer.css?1686327306">
 </head>
 <body>
-    <h1>Ingresar Datos</h1>
-    <hr> 
-<h5>¿No tienes cuenta? <a id="color2" href="{% url 'registro' %}">Haz click aquí para crear una.</h5>
-   
-<div>    
-    <label id="color2" for="email">Correo electrónico:</label>
 
-    <input type="email" name="email" required>
-            <br>
+  <div id="wrapper">
+
+    <div id="box" class="container">
+  <h2>Ingresa tus datos para acceder</h2>
+
+  <div id="flash">
+  </div>
+
+  <div class="slider">
+    <form action="/customer/login" method="post">
+
+      <p>
+        ¿No tienes cuenta?
+        <a id="color2 right" href="{% url 'registro' %}" style="margin-top: 10px">Haz click aquí</a>
+        para crear una.
+      </p>
+
+      <fieldset>
+        <label for="user_email">Tu email:</label>
+        <input tabindex="1" placeholder="ej: usuario@mail.com" type="email" name="email" id="user_email" value="">
         
-    <label id="color2" for="password">Contraseña:</label>
-    
-    <input type="password" name="password" required>
-                
-    <br>
-        
-    <input type="submit" value="Iniciar sesión">
-    <a id="color2" href="{% url 'Home' %}"> O Volver a la Tienda</a>   
-</div>   
-</form>
+        <a class="right" href="{% url 'registro' %}">Recuperar Contraseña</a>
+
+        <label for="user_password">Contraseña:</label>
+        <input tabindex="2" type="password" name="password" id="user_password">
+
+        <p class="submit" style="margin-top: 10px;">
+          <input class="primary bootic_button" type="submit" value="Ingresar" tabindex="3">
+          &nbsp;o <a id="color2 right" href="{% url 'Home' %}" style="margin: 10px">Volver a la tienda</a>
+        </p>
+      </fieldset>
+
+    </form>
+  </div><!-- /slider -->
+
+</div><!-- /container -->
+
+  </div>
+
 </body>
 </html>
 {% endblock content  %}

@@ -3,22 +3,88 @@
 {% block css %}
 {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <link rel="stylesheet" href="https://assets.btcdn.co/res/css/customer.css?1686327298">
 </head>
-<body>
-    <h1>Registro Usuario</h1>
-    <hr>    
-    <form action="" method="post">
+<body cz-shortcut-listen="true">
+  <div id="wrapper">
+  
+    <div id="box" class="container">
+  <h2>Ingresa tus datos para crear tu cuenta</h2>
+
+  <p>En la próxima página podrás crear una contraseña.</p>
+
+  <div id="flash">
+  </div>
+
+  <div class="slider">
+    <form action="/customer/register" method="post">
+      <fieldset>
+        <p class="radios">
+          <label>Tipo de cuenta</label>
+
+          <label class="secondary">
+            <input checked="" value="person" onchange="return toggleUserType(this)" name="user-type" type="radio">
+            <span>Persona</span>
+          </label>
+
+          <label class="secondary">
+            <input value="company" onchange="return toggleUserType(this)" name="user-type" type="radio">
+            <span>Empresa</span>
+          </label>
+        </p>
+
+        <label for="user_name">Nombre <span id="required">(Requerido)</span></label>
+        <input required="" tabindex="1" placeholder="Ej: Nombre Apellidos" type="text" name="name" id="user_name" value="">
+
+        <label for="user_email">Email <span id="required">(Requerido)</span></label>
+        <input required="" tabindex="2" placeholder="Ej: usuario@gmail.com" type="email" name="email" id="user_email" value="">
+
+        <label for="user_phone_number">Teléfono <span id="required">(Requerido)</span></label>
+        <input required="" tabindex="3" placeholder="Ej: +569 **** ****" type="text" name="phone_number" id="user_phone_number" value="">
+
+        <div id="company-fields" style="display:none">
+          <label for="user_company_name">Nombre Empresa <span id="required">(Requerido)</span></label>
+          <input required="" disabled="" tabindex="4" type="text" name="company_name" id="user_company_name" value="">
+
+          <label for="user_company_id_number">RUT Empresa <span class="required">(Requerido)</span></label>
+          <input required="" disabled="" tabindex="5" type="text" name="company_id_number" id="user_company_id_number" value="">
+        </div>
+
+
+        <p class="submit">
+          <input class="primary" type="submit" value="Registrarse" tabindex="6">
+          &nbsp;o <a href="{% url 'login' %}" style="margin: 10px 0 0 4px">Volver</a>
+        </p>
+      </fieldset>
+
+    </form>
+  </div><!-- /slider -->
+
+</div><!-- /container -->
+
+<script type="text/javascript">
+  window.toggleUserType = function(input) {
+    var div = document.getElementById('company-fields');
+    if (!div) return;
+
+    if (input.value == 'company') {
+      div.style.display = 'block';
+      document.getElementById('user_company_name').disabled = null;
+      document.getElementById('user_company_id_number').disabled = null;
+    } else {
+      div.style.display = 'none';
+      document.getElementById('user_company_name').disabled = true;
+      document.getElementById('user_company_id_number').disabled = true;
+    }
+  
+</script>
+  </div>
+</body
+</html>
+
         {% csrf_token %}
         {{ form.as_p }}
-
-
 
         {% if form.errors %}
             <div class="errors">
@@ -31,62 +97,5 @@
                 </ul>
             </div>
         {% endif %}
-
-        
-  <a id="color2"  href="{% url 'Home' %}">Inicio</a> | <a id="color2"  href="{% url 'login' %}"> Inicio de sesión</a></h5>
-        
-  <input type="submit" value="Registrar">
-
-        
-    </form>
-    =========================================================================
-    <main>
-        <section class="container-fluid d-flex align-items-center">
-              <article class="col-md-10 ms-3 ">
-                <form class="row g-3">
-                  <div class="col-md-6">
-                    <label for="inputNombre" class="form-label">Nombre</label>
-                    <input type="email" class="form-control" id="inputNombre" placeholder="Nombre">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputnumero" class="form-label">Telefono</label>
-                    <input type="password" class="form-control" id="inputnumero" placeholder="+569">
-                  </div>
-                  <div class="col-8">
-                    <label for="inputEmail" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="@gmail.com">
-                  </div>
-                  <div class="col-8">
-                    <label for="inputDirección" class="form-label">Dirección</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Dirección">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputCiudad" class="form-label">Ciudad</label>
-                    <input type="text" class="form-control" id="inputCiudad" placeholder="Ciudad">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="inputComuna" class="form-label">Comuna</label>
-                    <select id="inputState" class="form-select">
-                      <option selected>Buscar...</option>
-                      <option>...</option>
-                    </select>
-                  </div>
-                  <div class="col-8">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck">
-                      <label class="form-check-label" for="gridCheck">
-                        Confirmar
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-8">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                  </div>
-                </form>
-              </article>
-                </div>
-        </section>
-      </main>
-</body>
-</html>
+    
 {% endblock content  %}
