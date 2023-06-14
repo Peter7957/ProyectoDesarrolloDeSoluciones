@@ -86,21 +86,5 @@
         {% csrf_token %}
         {{ form.as_p }}
 
-<<<<<<< HEAD
-
-        <!-- Si ves esto no tengo idea de que hace, Creo que la wea no funciona -->
-=======
->>>>>>> refs/remotes/origin/main
-        {% if form.errors %}
-            <div class="errors">
-                <ul>
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <li>{{ field.label }}: {{ error }}</li>
-                        {% endfor %}
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
     
 {% endblock content  %}
