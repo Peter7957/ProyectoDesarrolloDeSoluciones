@@ -22,7 +22,8 @@
   </div>
 
   <div class="slider">
-    <form action="/customer/login" method="post">
+    <form action="" method="post">
+      {% csrf_token %}
 
       <p>
         ¿No tienes cuenta?
@@ -31,6 +32,7 @@
       </p>
 
       <fieldset>
+        <!--
         <label for="user_email">Tu email:</label>
         <input tabindex="1" placeholder="ej: usuario@mail.com" type="email" name="email" id="user_email" value="">
         
@@ -38,7 +40,8 @@
 
         <label for="user_password">Contraseña:</label>
         <input tabindex="2" type="password" name="password" id="user_password">
-
+        -->
+        {{form}}
         <p class="submit" style="margin-top: 10px;">
           <input class="primary bootic_button" type="submit" value="Ingresar" tabindex="3">
           &nbsp;o <a id="color2 right" href="{% url 'Home' %}" style="margin: 10px">Volver a la tienda</a>
@@ -50,8 +53,7 @@
 
 </div><!-- /container -->
 
-  </div>
-
+</div>
 </body>
 </html>
 {% endblock content  %}
