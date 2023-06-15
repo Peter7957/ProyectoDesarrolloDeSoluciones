@@ -1,3 +1,20 @@
+#imgPrincipal{
+    width: 100%;
+    height: auto;
+}
+.imapro{
+    width: 30%;
+    height: auto;
+    margin-left: 2%;
+}
+.texpro{
+    width: 30%;
+    height: auto;
+    margin-left: 2%;
+}
+.iconoBoton{
+    margin-left: 2%;
+}
 header {
     background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 70%);
 }
@@ -19,6 +36,9 @@ header {
 }
 #Nav3 a:hover {
     background-color:rgba(41, 176, 214, 0.964);
+}
+body{
+    background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 70%);
 }
 .footer h4{
     background-color: rgb(8, 98, 161);
