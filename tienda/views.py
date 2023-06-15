@@ -1,17 +1,12 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import Producto, CustomUser
 from .forms import ProductoForm , CustomUserCreationForm
-from .carrito import Carrito
+from .Carrito import CarritoManager
 from django.contrib import messages
-
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 
-
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
 from .models import CustomUser
 
 #Rutas 
@@ -92,25 +87,25 @@ def eliminar_producto(request, id):
 
 #CRUD Carrito
 def agregar_producto_carrito(request, producto_id):
-    carrito = Carrito(request)
+    carrito = CarritoManager(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.agregar(producto)
     return redirect("Producto")
     
 def eliminar_producto_carrito(request, producto_id):
-    carrito = Carrito(request)
+    carrito = CarritoManager(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.eliminar(producto)
     return redirect("Producto")
 
 def restar_producto_carrito(request, producto_id):
-    carrito = Carrito(request)
+    carrito = CarritoManager(request)
     producto = Producto.objects.get(id=producto_id)
     carrito.restar(producto)
     return redirect("Producto")
 
 def limpiar_producto_carrito(request):
-    carrito = Carrito(request)
+    carrito = CarritoManager(request)
     carrito.limpiar()
     return redirect("Producto")
 
