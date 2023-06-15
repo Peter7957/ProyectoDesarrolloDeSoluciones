@@ -141,6 +141,9 @@ STATIC_URL = 'static/'
 IMG_URL = "/tienda/img/"
 IMG_ROOT = os.path.join(BASE_DIR, "tienda/img")
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'node_modules/bootstrap/dist'),
 ]
