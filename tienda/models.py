@@ -9,6 +9,7 @@ class Marca(models.Model):
     ##Me permite ver el nombre cuando registre algo en el admin de django
     def __str__(self):
         return self.nombre
+    
 class Aro(models.Model):    
     Aro = models.CharField(max_length=5)
     
@@ -57,3 +58,10 @@ class CustomUser(AbstractUser):
         related_name='customuser_set',  # Agregar related_name único
         related_query_name='customuser'
     )
+
+class Carrito(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    productos = models.ManyToManyField(Producto)
+
+    def __str__(self):
+        return f"Carrito de {self.user.username}"
