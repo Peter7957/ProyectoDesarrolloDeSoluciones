@@ -25,7 +25,26 @@
             <br/>
             <br/>
             <section  class="imaproCon">
-              <section class="container"> 
+              <section class="container">
+
+                {% for p in productos %}
+                  <div class="row">
+                  <img class="imapro col-md-4" src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
+                  </div>
+                  <div class="row">
+                    <div class="texpro col-md-4">
+                      <p>{{ p.descripcion }}</p>
+                    </div>
+                  </div>
+                  <div class="botonPre row">
+                    <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
+                      <button class="boton rounded-start rounded-end ">Carrito</button>
+                    </a>
+                  </div>
+                {% endfor %}
+
+
+                
                   <div class=" row"> 
                     <img class="imapro col-md-4" src="{% static 'tienda/img/1categoria/(1)ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
                     <img class="imapro col-md-4" src="{% static 'tienda/img/1categoria/(2)BICICLETA BIANCHI ADVANTAGE 275 SX $219.990.jpg' %}" alt="imagen">
