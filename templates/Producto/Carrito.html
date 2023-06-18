@@ -14,6 +14,7 @@
             <tr>
                 <td>{{ value.nombre }}</td>
                 <td>{{ value.precio }}</td>
+                <td>{{ value.cantidad }}</td>
                 <td>{{ value.acumulado }}
                     <a href="{% url 'agregar_producto_carrito' value.producto_id %}">+</a>
                     <a href="{% url 'restar_producto_carrito' value.producto_id %}">-</a>

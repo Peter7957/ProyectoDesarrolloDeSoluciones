@@ -17,23 +17,36 @@
         <br/>
         <br/>
         <br/>
-            <section class="d-flex justify-content-center "> 
-              <p><h1>Bicicletas</h1></p>
-              <div class='imgHome'>
-              </section>
-              <br/>
+          <section class="d-flex justify-content-center "> 
+            <p><h1>Bicicletas</h1></p>
+            <div class='imgHome'>
+          </section>
+            <br/>
             <br/>
             <br/>
             <section  class="imaproCon">
-              <section class="container">
+              {% include "./Carrito.html" %}
+              <section class="container d-flex justify-content-around flex-wrap">
 
                 {% for p in productos %}
+                <div class="card col-md-3 m-1 my-2">
+                  <img src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ p.nombre }}</h5>
+                    <p class="card-text">{{ p.descripcion }}</p>
+                    <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
+                      <button class="boton rounded-start rounded-end ">Carrito</button>
+                    </a>
+                  </div>
+                </div>
+
+                  <!--
                   <div class="row">
-                  <img class="imapro col-md-4" src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
+                  <img class="imapro col-md-4" src="{{ p.imagen.url }}" alt="">
                   </div>
                   <div class="row">
                     <div class="texpro col-md-4">
-                      <p>{{ p.descripcion }}</p>
+                      <p>{{ p.nombre }}</p>
                     </div>
                   </div>
                   <div class="botonPre row">
@@ -41,10 +54,11 @@
                       <button class="boton rounded-start rounded-end ">Carrito</button>
                     </a>
                   </div>
+                  -->
                 {% endfor %}
 
 
-                
+                <!--
                   <div class=" row"> 
                     <img class="imapro col-md-4" src="{% static 'tienda/img/1categoria/(1)ARO 29 MERAK 1 NEGRA 249.990.jpg' %}" alt="imagen">
                     <img class="imapro col-md-4" src="{% static 'tienda/img/1categoria/(2)BICICLETA BIANCHI ADVANTAGE 275 SX $219.990.jpg' %}" alt="imagen">
@@ -91,13 +105,14 @@
               </div>
             </br>
             <br/>
-                </section> 
+                
                 <br/>
                 <a id="iconoBoton" href="{% url 'Producto' %}"><img src="{% static 'tienda/img/icono.ico' %}" alt="icono"></a></h3>  
                 <br/>
                 <br/>
                 <br/>
-        
+              -->
+            </section> 
         <section class="d-flex justify-content-center "> 
           <h1 class="SubTi simple-list-item-2 ">Nuevos</h1>
             <p><h2> </h2></p>
@@ -428,6 +443,8 @@
 
     <table border>
         <!--titupo de mi tabla toda fea-->
+        <!--
+
         <tr>
         <th>Nombre</th>
         <th>Cantidad</th>
@@ -438,8 +455,6 @@
         <th>Comprar</th>
         
         </tr>
-        <!-- lineas que se reperiran hasta que se aburra-->
-
         {% for p in productos %}
         <tr>
             <td>{{ p.nombre }}</td>
@@ -457,7 +472,7 @@
         {% endfor %}
         
     </table>
-    {% include "./Carrito.html" %}
+    -->
   </section>
 </main>
 
