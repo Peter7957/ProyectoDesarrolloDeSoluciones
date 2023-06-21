@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Producto, CustomUser
+from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero
 from .forms import ProductoForm , CustomUserCreationForm
 from .Carrito import CarritoManager
 from django.contrib import messages
@@ -11,7 +11,11 @@ from .models import CustomUser
 
 #Rutas 
 def home(request):
-    return render(request, "Home/Home.html")
+    producto = Producto.objects.order_by('-id')[:4]
+    data ={
+        "productos": producto,
+    }
+    return render(request, "Home/Home.html", data)
 
 def bodega(request):
     return render(request, "Bodega/Bodega.html")
@@ -42,7 +46,6 @@ def detalles(request, producto_id):
 #CRUD Administrador 
 def agregar_producto(request):
 
-    
     data = {
         'form' : ProductoForm()
     }
@@ -142,3 +145,17 @@ class LoginCustom(LoginView):
                 return '/Bodega/'
         return '/'
         
+def filtro(request, filtro):
+    if(filtro == 'marca'):
+        filtrar = Marca.objects.all()
+    elif(filtro == 'modelo'):
+        filtrar = Modelo.objects.all()
+    elif(filtro == 'aro'):
+        filtrar = Aro.objects.all()
+    elif(filtro == 'genero'):
+        filtrar = Genero.objects.all()
+    
+    data = {
+        'filtrar': filtrar
+    }
+    return render(request, "Producto/Filtro.html", data)

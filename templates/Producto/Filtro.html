@@ -1,0 +1,12 @@
+{% extends '../Base.html' %}
+
+{% block content %}
+{% if filtrar %}
+    {% for f in filtrar %}
+    {{f.nombre}}
+    {% endfor %}
+{% else %}
+Sin Productos
+{% endif %}
+
+{% endblock content %}

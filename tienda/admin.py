@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
-from .models import CustomUser, Marca, Aro, Genero, Producto
+from .models import CustomUser, Marca, Aro, Genero, Producto, Modelo
 from .forms import CustomUserAdminForm
 
 # Register your models here.
@@ -41,4 +41,5 @@ admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Marca)
 admin.site.register(Aro)
 admin.site.register(Genero)
+admin.site.register(Modelo)
 admin.site.register(Producto,ProductoAdmin)

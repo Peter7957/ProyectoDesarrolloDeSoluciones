@@ -31,13 +31,14 @@
           <div class="col-4 ">
             <div id="fondo2" class="d-flex text-center">
               <a id="color" class="p-1 rounded nav-link " aria-current="page" href="{% url 'Producto' %}""#simple-list-item-1">Catalogo</a>
-            <!--  <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-2">Nuevos</a>
-              <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-3">Marca</a>
-              <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-4">Modelo</a>
-              <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-5">Genero</a>
-              <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-6">Aro</a>
+              <a id="color" class="p-1 rounded nav-link " href="{% url 'filtro' 'marca' %}">Marca</a>
+              <a id="color" class="p-1 rounded nav-link " href="{% url 'filtro' 'modelo' %}">Modelo</a>
+              <a id="color" class="p-1 rounded nav-link " href="{% url 'filtro' 'genero' %}">Genero</a>
+              <a id="color" class="p-1 rounded nav-link " href="{% url 'filtro' 'aro' %}">Aro</a>
+              <!--
               <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-7">Frenos</a>
-              <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-8">Descuentos</a><!-->
+              <a id="color" class="p-1 rounded nav-link " href="#simple-list-item-8">Descuentos</a>
+              -->
             </div>
           </div>
         </ul>

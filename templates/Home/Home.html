@@ -7,6 +7,28 @@
 <div >
     <img id="imgPrincipal" src="{% static 'tienda/img/principal.png' %}" alt="imagen1">
 </div>
+<h1>Productos nuevos</h1>
+<div class="row">
+
+        <div class="col-12 col-md-10 offset-md-1">
+            <div class="d-flex justify-content-around flex-wrap">
+            {% for p in productos %}
+                <div class="card col-md-3 m-1 my-2">
+                    <img src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.nombre }}</h5>
+                        <p class="card-text">{{ p.descripcion }}</p>
+                        <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
+                            <button class="boton rounded-start rounded-end ">Carrito</button>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+    
 {% endblock %}
 
 
