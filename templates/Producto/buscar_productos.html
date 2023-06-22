@@ -1,0 +1,16 @@
+{% extends '../Base.html' %}
+
+{% block content %}
+
+
+
+    {% if productos %}
+    <ul>
+    {% for producto in productos %}
+        <li>{{ producto.nombre }} - {{ producto.precio }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>No se encontraron productos.</p>
+    {% endif %}
+{% endblock content %}

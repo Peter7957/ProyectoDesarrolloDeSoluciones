@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
+from django.http import JsonResponse
+import json
 from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero
 from .forms import ProductoForm , CustomUserCreationForm
 from .Carrito import CarritoManager
@@ -29,10 +31,41 @@ def administrador(request):
 def producto(request):
     productos = Producto.objects.all()
     data = {
-        'productos' : productos
+        'productos' : productos,
     }
     return render(request, "Producto/Producto.html", data)
 
+def buscar_productos(request):
+    if 'query' in request.GET:
+        query = request.GET['query']
+        productos = Producto.objects.filter(nombre__icontains=query)
+    else:
+        productos = Producto.objects.all()
+    
+    context = {
+        'productos': productos
+    }
+
+    return render(request, 'Producto/buscar_productos.html', context)
+#
+#    results = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
+#    return JsonResponse(results, safe=False)
+
+#def buscar_productos(request):
+#    query = request.GET.get('query', '')
+#    productos = Producto.objects.filter(nombre__icontains=query)[:5]  # Obtén hasta 5 sugerencias
+#
+#    suggestions = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
+#    return JsonResponse(suggestions, safe=False)
+    #if 'query' in request.GET:
+    #    query = request.GET['query']
+    #    productos = Producto.objects.filter(nombre__icontains=query)
+    #else:
+    #    productos = Producto.objects.all()
+    #
+    #results = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
+    #return JsonResponse(results, safe=False)
+    #
 
 def detalles(request, producto_id):
     #INVESTIGAR ACERCA DE ESTA OPCION

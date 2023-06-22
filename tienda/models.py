@@ -5,15 +5,15 @@ from django.contrib.auth.models import AbstractUser, Group, Permission
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=100, null=True)
+    descripcion = models.CharField(max_length=350, null=True)
     imagen = models.ImageField(upload_to="Marca", null=True)
     ##Me permite ver el nombre cuando registre algo en el admin de django
     def __str__(self):
         return self.nombre
     
 class Aro(models.Model):    
-    nombre = models.CharField(max_length=5)
-    descripcion = models.CharField(max_length=100, null=True)
+    nombre = models.CharField(max_length=15)
+    descripcion = models.CharField(max_length=350, null=True)
     imagen = models.ImageField(upload_to="Aro", null=True)
     
     def __str__(self):
@@ -21,7 +21,7 @@ class Aro(models.Model):
      
 class Genero(models.Model):
     nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=100, null=True)
+    descripcion = models.CharField(max_length=350, null=True)
     imagen = models.ImageField(upload_to="Genero", null=True)
     
     def __str__(self):
@@ -29,7 +29,7 @@ class Genero(models.Model):
 
 class Modelo(models.Model):
     nombre = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=100, null=True)
+    descripcion = models.CharField(max_length=350, null=True)
     imagen = models.ImageField(upload_to="Modelo", null=True)
 
     def __str__(self):

@@ -1,0 +1,19 @@
+INSERT INTO tienda_marca VALUES (1,'Oxford','', 'Marca/(1)Oxford.jpg');
+INSERT INTO tienda_marca VALUES (2,'Trek','', 'Marca/(2)Trek.png');
+INSERT INTO tienda_marca VALUES (3,'Bianchi','', 'Marca/(3)Bianchi.png');
+INSERT INTO tienda_marca VALUES (4,'Bessati','', 'Marca/(4)bessati.webp');
+INSERT INTO tienda_marca VALUES (5,'Lahsen','', 'Marca/(5)lahsen.png');
+INSERT INTO tienda_marca VALUES (6,'Jeep','', 'Marca/(6)jeep.jpg');
+
+INSERT INTO tienda_modelo VALUES (1,'Bicicletas de montaña (MTB)','Las bicicletas de montaña son robustas y diseñadas para recorrer terrenos accidentados y senderos fuera de carretera. Son adecuadas para aventuras todoterreno, senderos con obstáculos y terrenos irregulares.', 'Modelo/(1)BicicletaMountainBike.jpg');
+INSERT INTO tienda_modelo VALUES (2,'Bicicletas de ruta','Las bicicletas de ruta, también conocidas como bicicletas de carretera o de carrera, están diseñadas para la velocidad y la eficiencia en carreteras pavimentadas. Son excelentes para recorridos rápidos y eficientes en carreteras asfaltadas.', 'Modelo/(2)BicicletaRuta.jpg');
+INSERT INTO tienda_modelo VALUES (3,'Bicicletas urbanas','Las bicicletas urbanas, también conocidas como bicicletas de ciudad o bicicletas urbanas, están diseñadas para desplazamientos diarios y viajes en entornos urbanos. Son adecuadas para desplazamientos cortos o medios en la ciudad, para ir al trabajo, a la tienda o para recorrer calles y carriles bici pavimentados.', 'Modelo/(3)BicicletaUrbana.jpg');
+
+INSERT INTO tienda_genero VALUES (1,'Hombre','', 'Genero/(1)BicicletaHombre.jpg');
+INSERT INTO tienda_genero VALUES (2,'Mujer','', 'Genero/(2)BicicletaMujer.webp');
+INSERT INTO tienda_genero VALUES (3,'Unisex','', 'Genero/(3)BicicletaUnisex.webp');
+
+INSERT INTO tienda_aro VALUES (1,'aro 27','Las ruedas de aro 27 son populares para el ciclismo de montaña en general y se adaptan bien a una amplia variedad de condiciones y estilos de conducción.', 'Aro/(1)BicicletaAro27.webp');
+INSERT INTO tienda_aro VALUES (2,'aro 27.5','Las ruedas de aro 27.5 pulgadas  ofrecen un equilibrio entre agilidad y estabilidad. Son más ágiles y maniobrables que las ruedas más grandes, lo que las hace adecuadas para terrenos técnicos y sinuosos. Además, son más livianas y pueden acelerar más rápido.', 'Aro/(2)BicicletaAro275.jpg');
+INSERT INTO tienda_aro VALUES (3,'aro 29','Descripcion:Las ruedas de aro 29 pulgadas ofrecen una mayor capacidad de rodadura y son ideales para terrenos más abiertos y velocidades más altas. Son especialmente adecuadas para senderos rápidos y rectos, ya que mantienen el impulso y la velocidad con mayor eficiencia.', 'Aro/(3)BicicletaAro29.jpg');
+
