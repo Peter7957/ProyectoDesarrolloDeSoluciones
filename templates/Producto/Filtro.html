@@ -6,11 +6,6 @@
             {% for f in filtrar %}
                 <div class="card col-md-3 m-1 my-2">
                         <img src="{{ f.imagen.url }}" class="card-img-top" alt="{{ f.nombre }}">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ f.nombre }}</h5>
-                        </a>
-                    </div>
                 </div>
             {% endfor %}
         {% else %}

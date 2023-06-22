@@ -2,24 +2,31 @@
 
 {% block content %}
 
-    <table>
+<div class="container">
+    <h2>Lista de Productos</h2>
+    <table class="table">
+      <thead>
         <tr>
             <th>Nombre</th>
             <th>Precio</th>
             <th>Marca</th>
             <th>Modificar</th>
+            <th>Img</th>
         </tr>
+      </thead>
+      <tbody>
         {% for prod in producto %}
-            <tr>
-           
-                <td>{{prod.nombre}}</td>
-                <td>{{prod.precio}}</td>
-                <td>{{prod.marca}}</td>
-                <td><a href="{% url 'modificar_producto' id=prod.id %}">modificar</a></td>
-                <td><a href="{% url 'eliminar_producto' id=prod.id %}">eliminar</a></td>
-            </tr>
+        <tr>
+            <td>{{prod.nombre}}</td>
+            <td>{{prod.precio}}</td>
+            <td>{{prod.marca}}</td>
+            <td><img src="{{prod.imagen.url}}" alt="">{{prod.imagen}}</td>
+            <td><a href="{% url 'modificar_producto' id=prod.id %}">modificar</a></td>
+            <td><a href="{% url 'eliminar_producto' id=prod.id %}">eliminar</a></td>
+        </tr>
         {% endfor %}
-        
+      </tbody>
     </table>
+    <!-- product_list.html -->
 
 {% endblock %}

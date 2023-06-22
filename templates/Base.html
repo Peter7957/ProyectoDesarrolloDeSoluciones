@@ -19,9 +19,9 @@
   <div class="row">
     <div class="container d-flex">
       <a class="col-md-2 m-3" href="{% url 'Home' %}">
-        <!--
+        
         <img class="rounded-pill" src="{% static 'tienda/img/Logo.png' %}" alt="" srcset="">
-        -->
+        
         <h3 class="d-flex justify-content-center">Elige tu bici</h3>
       </a>
   
@@ -35,39 +35,6 @@
         </a>
     </div>
   </div>
-    
-  
-
-<!--
-<ul id="results-container"></ul>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#search-form').on('submit', function(event) {
-        event.preventDefault(); // Evitar la acción predeterminada del formulario
-        var query = $('#search-input').val().trim();
-        if (query === '') {
-            $('#results-container').empty();
-            return;
-        }
-
-        $.ajax({
-            url: '/Buscar/',
-            data: { 'query': query },
-            success: function(data) {
-                $('#results-container').empty();
-                $.each(data, function(index, result) {
-                    var listItem = $('<li>').text(result.nombre + ' - ' + result.precio);
-                    $('#results-container').append(listItem);
-                });
-            }
-        });
-    });
-});
-</script>
--->
-
 
 
 
