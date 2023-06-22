@@ -60,10 +60,14 @@
               -->
             </div>
           </div>
+
         </ul>
       </li>
     </div>
-        <div id="Nav3" class="nav nav-tabs">
+
+      <!--
+    </div>
+      <div id="Nav3" class="nav nav-tabs">
         <a class="nav-link" aria-current="page" href="{% url 'agregar_producto' %}">Agregar</a>
         <a class="nav-link" aria-current="page" href="{% url 'listar_productos' %}">Listar</a>
     
@@ -74,16 +78,11 @@
         {% endif %}
         </div>
         </div>
-        </div>
+        -->
         </div>
       </nav>
     </ul> 
   </header>
-
-    <main id="Logeo"><!-- login.html -->
-      <!-- Se elimino el login hecho en Base.html debido a que se creo usando las practicas de Django -->
-      <!-- Tengo que rehacer el de registro para que pueda quedarse guardado en la BD-->
-      </main>
 
     {% block content %}
     
