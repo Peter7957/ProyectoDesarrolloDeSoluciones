@@ -13,7 +13,7 @@ from .models import CustomUser
 
 #Rutas 
 def home(request):
-    producto = Producto.objects.order_by('-id')[:4]
+    producto = Producto.objects.order_by('-id')[:3]
     data ={
         "productos": producto,
     }
@@ -47,25 +47,13 @@ def buscar_productos(request):
     }
 
     return render(request, 'Producto/buscar_productos.html', context)
-#
-#    results = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
-#    return JsonResponse(results, safe=False)
 
-#def buscar_productos(request):
-#    query = request.GET.get('query', '')
-#    productos = Producto.objects.filter(nombre__icontains=query)[:5]  # Obtén hasta 5 sugerencias
-#
-#    suggestions = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
-#    return JsonResponse(suggestions, safe=False)
-    #if 'query' in request.GET:
-    #    query = request.GET['query']
-    #    productos = Producto.objects.filter(nombre__icontains=query)
-    #else:
-    #    productos = Producto.objects.all()
-    #
-    #results = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
-    #return JsonResponse(results, safe=False)
-    #
+def categoria(request, categoria):
+    producto = Producto.objects.get(id=categoria)
+    productos = Producto.objects.filter(nombre__icontains=producto)
+    data = {'productos' : productos}
+    
+    return render(request, "Producto/Categoria.html", data)
 
 def detalles(request, producto_id):
     #INVESTIGAR ACERCA DE ESTA OPCION

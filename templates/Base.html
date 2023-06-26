@@ -35,41 +35,6 @@
         </a>
     </div>
   </div>
-    
-  
-
-<!--
-<ul id="results-container"></ul>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#search-form').on('submit', function(event) {
-        event.preventDefault(); // Evitar la acción predeterminada del formulario
-        var query = $('#search-input').val().trim();
-        if (query === '') {
-            $('#results-container').empty();
-            return;
-        }
-
-        $.ajax({
-            url: '/Buscar/',
-            data: { 'query': query },
-            success: function(data) {
-                $('#results-container').empty();
-                $.each(data, function(index, result) {
-                    var listItem = $('<li>').text(result.nombre + ' - ' + result.precio);
-                    $('#results-container').append(listItem);
-                });
-            }
-        });
-    });
-});
-</script>
--->
-
-
-
 
 
     <ul class="nav nav-tabs ">
@@ -112,11 +77,6 @@ $(document).ready(function() {
       </nav>
     </ul> 
   </header>
-
-    <main id="Logeo"><!-- login.html -->
-      <!-- Se elimino el login hecho en Base.html debido a que se creo usando las practicas de Django -->
-      <!-- Tengo que rehacer el de registro para que pueda quedarse guardado en la BD-->
-      </main>
 
     {% block content %}
     

@@ -2,14 +2,14 @@
 
 {% block content %}
     <section class="container d-flex justify-content-around flex-wrap">
-        {% if filtrar %}
-            {% for f in filtrar %}
+        {% if productos %}
+            {% for p in productos %}
                 <div class="card col-md-3 m-1 my-2">
-                    <img src="{{ f.imagen.url }}" class="card-img-top" alt="{{ f.nombre }}">
+                    <img src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
                         
                     <div class="card-body">
-                        <a href="{% url 'categoria' categoria=f.id %}">
-                            <h5 class="card-title">{{ f.nombre }}</h5>
+                        <a href="{% url 'categoria' categoria=p.name %}">
+                            <h5 class="card-title">{{ p.nombre }}</h5>
                         </a>
                     </div>
                 </div>
