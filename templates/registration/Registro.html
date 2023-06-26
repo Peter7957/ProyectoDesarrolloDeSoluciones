@@ -1,9 +1,20 @@
 {% extends '../Base.html' %}
 {% load static %}
-
+{% block css %}
+{% endblock %}
 {% block link %}
-  <link rel="stylesheet" href="https://assets.btcdn.co/res/css/customer.css?1686327298">
-{% endblock link %}
+<link rel="stylesheet" href="https://assets.btcdn.co/res/css/customer.css?1686327298">
+{% endblock %}
+{% block content %}
+
+
+  
+
+<div id="wrapper">
+<body cz-shortcut-listen="true">
+  
+    <div id="caja" class="container" >
+  <h2>Ingresa tus datos para crear tu cuenta</h2>
 
 {% block content %}
   <div id="wrapper">
@@ -14,7 +25,6 @@
         <div class="box">
           <h2>Ingresa tus datos para crear tu cuenta</h2>
 
-    <p>En la próxima página podrás crear una contraseña.</p>
 
     <div class="slider">
       <form action="" method="post">
@@ -24,36 +34,35 @@
           {{ form.as_p }}
 
 
-          <p class="submit">
-            <input class="primary" type="submit" value="Registrarse" tabindex="6">
-            &nbsp;o <a href="{% url 'login' %}" style="margin: 10px 0 0 4px">Volver</a>
-          </p>
-        </fieldset>
+        <p class="submit">
+          <input class="primary" type="submit" value="Registrarse" tabindex="6">
+          &nbsp;o <a href="{% url 'login' %}" style="margin: 10px 0 0 4px">Volver</a>
+        </p>
+      </fieldset>
 
-      </form>
-    </div><!-- /slider -->
-    </div>
+    </form>
+  </div><!-- /slider -->
+
+</div><!-- /container -->
+
+<script type="text/javascript">
+  window.toggleUserType = function(input) 
+    var div = document.getElementById('company-fields');
+    if (!div) return;
+
+    if (input.value == 'company') {
+      div.style.display = 'block';
+      document.getElementById('user_company_name').disabled = null;
+      document.getElementById('user_company_id_number').disabled = null;
+    } else {
+      div.style.display = 'none';
+      document.getElementById('user_company_name').disabled = true;
+      document.getElementById('user_company_id_number').disabled = true;
+    }
     
+</script>
+  </div>
+</body>
+</html>   
 
-  </div><!-- /container -->
-
-  <script type="text/javascript">
-    window.toggleUserType = function(input) {
-      var div = document.getElementById('company-fields');
-      if (!div) return;
-
-      if (input.value == 'company') {
-        div.style.display = 'block';
-        document.getElementById('user_company_name').disabled = null;
-        document.getElementById('user_company_id_number').disabled = null;
-      } else {
-        div.style.display = 'none';
-        document.getElementById('user_company_name').disabled = true;
-        document.getElementById('user_company_id_number').disabled = true;
-      }
-    
-  </script>
-
-    </div>
-  </body>
-{% endblock content %}
+{% endblock content  %} 
