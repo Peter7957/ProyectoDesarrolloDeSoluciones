@@ -26,7 +26,7 @@
     margin-bottom: 5%;
 }
 header {
-    background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 70%);
+    background-color: #006494;
 }
 #NavInicio a:hover {
     background-color:rgba(41, 176, 214, 0.964);
@@ -36,10 +36,10 @@ header {
 }
 #color {
     color: rgb(195, 221, 227);
-    background-color: rgb(66, 152, 195);
+    background-color:#6b9ac4;
 }
 #fondo1 {
-    background-color: rgb(16, 103, 157);
+    background-color: red;
 }
 #fondo2 {
     background-color: rgb(16, 103, 157);
@@ -48,7 +48,7 @@ header {
     background-color:rgba(41, 176, 214, 0.964);
 }
 body{
-    background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 8%, #6BBBFF 70%);
+    background-COLOR: #0582ca;
 }
 .footer h4{
     background-color: rgb(8, 98, 161);
