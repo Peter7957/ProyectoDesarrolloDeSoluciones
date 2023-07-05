@@ -1,0 +1,113 @@
+#imgPrincipal{
+    width: 100%;
+    height: auto;
+}
+.imapro{
+    width: 30%;
+    height: auto;
+    margin-left: 2%;
+}
+.texpro{
+    width: 30%;
+    height: auto;
+    margin-left: 2%;
+}
+#iconoBoton{
+    width: 30%;
+    margin-left: 90%;
+}
+.botonPre{
+    margin-left: 1%;
+}
+.boton1{
+    margin-bottom: 2%;
+}
+.SubTi{
+    margin-bottom: 5%;
+}
+header {
+    background-COLOR: #8ac2e2;
+}
+#NavInicio a:hover {
+    background-color:rgba(41, 176, 214, 0.964);
+}
+.Nav2 a:hover {
+    background-color:rgba(41, 176, 214, 0.964);
+}
+#Buscar{
+    position: absolute;
+    top: 5%;
+    right: 20%;
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    transform-origin: top;
+    padding: 10px;
+    border-radius: 10px; 
+}
+.Carro{
+    position: absolute;
+    top: 7%;
+    right: 1%;
+    width: 15rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    transform-origin: top;
+    font-size: 40px;
+}
+.Perso{
+    position: absolute;
+    top: 0%;
+    right: 2%;
+    width: 5rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    transform-origin: top;
+    font-size: 40px;
+}
+#color {
+    color: rgb(195, 221, 227);
+    background-color:#6b9ac4;
+}
+#fondo2 {
+    background-color: rgb(52, 137, 190);
+}
+#Nav3 a:hover {
+    background-color:rgba(41, 176, 214, 0.964);
+}
+body{
+    background-COLOR: #b0d1e4;
+}
+.footer h4{ 
+
+    background-color: rgb(108, 189, 247);
+}
+#caja{
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 15rem;
+}
+.footer{
+    background-COLOR: #8ac2e2;
+    text-align: center;
+}
+
+.footer .share{
+    padding: 1rem;
+}
+.footer .share a{
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    margin: .3rem;
+    border-radius: 50%;
+
+}
+.footer .share a:hover{
+    background-color: #40c7de;
+
+}
