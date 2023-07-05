@@ -1,0 +1,29 @@
+{% extends '../../Base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Lista de Aros</h2>
+    <table class="table">
+      <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Img</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for prod in producto %}
+        <tr>
+            <td>{{prod.nombre}}</td>
+            <td>{{prod.descipcion}}</td>
+            <td><img src="{{prod.imagen.url}}" alt="">{{prod.imagen}}</td>
+            <td><a href="{% url 'modificar_producto' filtro='aro' id=prod.id %}">modificar</a></td>
+            <td><a href="{% url 'eliminar_producto' filtro='aro' id=prod.id %}">eliminar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <!-- product_list.html -->
+
+{% endblock %}
