@@ -16,7 +16,16 @@
     {% endblock %}
   </head>
 <header>
+  
+  <div class="search-form">
+    <input type="text" id="search-box" placeholder="Buscar productos"value="{{ request.GET.query }}">
+    <button class="btn btn-primary active" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
+  </div>
 
+
+  <a class="Carro fas fa-shopping-cart d-flex justify-content-center material-symbols-outlined" id="cart-btn"></a>
+  <a class="Perso d-flex justify-content-center material-symbols-outlined" href="{% url 'login' %}">
+    person</a>
 
 
       <a class="col-md-2 m-3" href="{% url 'Home' %}">
