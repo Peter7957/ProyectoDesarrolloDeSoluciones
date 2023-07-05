@@ -1,4 +1,4 @@
-{% extends '../Base.html' %}
+{% extends '../../Base.html' %}
 
 {% block content %}
 
@@ -21,8 +21,8 @@
             <td>{{prod.precio}}</td>
             <td>{{prod.marca}}</td>
             <td><img src="{{prod.imagen.url}}" alt="">{{prod.imagen}}</td>
-            <td><a href="{% url 'modificar_producto' id=prod.id %}">modificar</a></td>
-            <td><a href="{% url 'eliminar_producto' id=prod.id %}">eliminar</a></td>
+            <td><a href="{% url 'modificar_producto' filtro='producto' id=prod.id %}">modificar</a></td>
+            <td><a href="{% url 'eliminar_producto' filtro='producto' id=prod.id %}">eliminar</a></td>
         </tr>
         {% endfor %}
       </tbody>

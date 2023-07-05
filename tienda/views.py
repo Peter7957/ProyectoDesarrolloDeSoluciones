@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.http import JsonResponse
 import json
 from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero
-from .forms import ProductoForm , CustomUserCreationForm
+from .forms import ProductoForm, MarcaForm, ModeloForm, GeneroForm, AroForm,  CustomUserCreationForm
 from .Carrito import CarritoManager
 from django.contrib import messages
 
@@ -13,7 +13,7 @@ from .models import CustomUser
 
 #Rutas 
 def home(request):
-    producto = Producto.objects.order_by('-id')[:4]
+    producto = Producto.objects.order_by('-id')[:3]
     data ={
         "productos": producto,
     }
@@ -45,27 +45,14 @@ def buscar_productos(request):
     context = {
         'productos': productos
     }
-
     return render(request, 'Producto/buscar_productos.html', context)
-#
-#    results = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
-#    return JsonResponse(results, safe=False)
 
-#def buscar_productos(request):
-#    query = request.GET.get('query', '')
-#    productos = Producto.objects.filter(nombre__icontains=query)[:5]  # Obtén hasta 5 sugerencias
-#
-#    suggestions = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
-#    return JsonResponse(suggestions, safe=False)
-    #if 'query' in request.GET:
-    #    query = request.GET['query']
-    #    productos = Producto.objects.filter(nombre__icontains=query)
-    #else:
-    #    productos = Producto.objects.all()
-    #
-    #results = [{'nombre': producto.nombre, 'precio': str(producto.precio)} for producto in productos]
-    #return JsonResponse(results, safe=False)
-    #
+def categoria(request, id_categoria):
+    #producto = Producto.objects.get(id=id_categoria)
+    productos = Producto.objects.filter(nombre=id_categoria)
+    data = {'productos' : productos}
+    
+    return render(request, "Producto/Categoria.html", data)
 
 def detalles(request, producto_id):
     #INVESTIGAR ACERCA DE ESTA OPCION
@@ -77,49 +64,229 @@ def detalles(request, producto_id):
 
 
 #CRUD Administrador 
-def agregar_producto(request):
+def agregar_producto(request, filtro):
+    if(filtro == 'producto'):
 
-    data = {
-        'form' : ProductoForm()
-    }
+        data = {
+        'form' : ProductoForm(),
+        'title' : filtro 
+        }
 
-    if request.method == 'POST':
-        formulario = ProductoForm(data=request.POST, files=request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            data["mensaje"] = "guardado correctamente"
-        else:
-            data["form"] = formulario
-            data["mensaje"] = "Error"
+        if request.method == 'POST':
+            formulario = ProductoForm(data=request.POST, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                data["mensaje"] = "guardado correctamente"
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+
+    elif(filtro == 'marca'):
+            
+        data = {
+        'form' : MarcaForm(),
+        'title' : filtro 
+        }
+
+        if request.method == 'POST':
+            formulario = MarcaForm(data=request.POST, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                data["mensaje"] = "guardado correctamente"
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+        
+    elif(filtro == 'modelo'):
+        
+        data = {
+        'form' : ModeloForm(),
+        'title' : filtro 
+        }
+
+        if request.method == 'POST':
+            formulario = ModeloForm(data=request.POST, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                data["mensaje"] = "guardado correctamente"
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+
+    elif(filtro == 'genero'):
+            
+        data = {
+        'form' : GeneroForm(),
+        'title' : filtro 
+
+        }
+
+        if request.method == 'POST':
+            formulario = GeneroForm(data=request.POST, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                data["mensaje"] = "guardado correctamente"
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+
+    elif(filtro == 'aro'):
+            
+        data = {
+        'form' : AroForm(),
+        'title' : filtro 
+        }
+
+        if request.method == 'POST':
+            formulario = AroForm(data=request.POST, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                data["mensaje"] = "guardado correctamente"
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
     return render(request, "Admin/Agregar.html", data)
 
-def listar_productos(request):
-    producto = Producto.objects.all()
-    data = {
-        "producto" : producto
-    }
-    return render(request, "Admin/Listar.html", data)
+def listar_productos(request, filtro):
+    if(filtro == 'producto'):
+        producto = Producto.objects.all()
+        template = 'Admin/Listar/Listar_Producto.html'
+        data = {
+            "producto" : producto,
+            "title" : filtro
+        }
+    elif(filtro == 'marca'):
+        producto = Marca.objects.all()
+        template = 'Admin/Listar/Listar_Marca.html'
+        data = {
+            "producto" : producto,
+            "title" : filtro
+        }
+    elif(filtro == 'modelo'):
+        producto = Modelo.objects.all()
+        template = 'Admin/Listar/Listar_Modelo.html'
+        data = {
+            "producto" : producto,
+            "title" : filtro
+        }
+    elif(filtro == 'genero'):
+        producto = Genero.objects.all()
+        template = 'Admin/Listar/Listar_Genero.html'
+        data = {
+            "producto" : producto,
+            "title" : filtro
+        }
+    elif(filtro == 'aro'):
+        producto = Aro.objects.all()
+        template = 'Admin/Listar/Listar_Aro.html'
+        data = {
+            "producto" : producto,
+            "title" : filtro
+        }
+    return render(request, template, data)
 
-def modificar_producto(request, id):
-    producto = get_object_or_404(Producto, id=id)
-    data = {
-        'form' : ProductoForm(instance=producto)
-    }
+def modificar_producto(request,filtro, id):
+    if(filtro == 'producto'):
+        producto = get_object_or_404(Producto, id=id)
+        data = {
+            'form' : ProductoForm(instance=producto)
+        }
 
-    if request.method == 'POST':
-        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect(to="listar_productos")
-        else:
-            data["form"] = formulario
-            data["mensaje"] = "Error"
+        if request.method == 'POST':
+            formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                return redirect(to="listar_productos", filtro=filtro)
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+    
+    elif(filtro == 'marca'):
+        producto = get_object_or_404(Marca, id=id)
+        data = {
+            'form' : MarcaForm(instance=producto)
+        }
+
+        if request.method == 'POST':
+            formulario = MarcaForm(data=request.POST, instance=producto, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                return redirect(to="listar_productos", filtro=filtro)
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+
+    elif(filtro == 'modelo'):
+        producto = get_object_or_404(Modelo, id=id)
+        data = {
+            'form' : ModeloForm(instance=producto)
+        }
+
+        if request.method == 'POST':
+            formulario = ModeloForm(data=request.POST, instance=producto, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                return redirect(to="listar_productos", filtro=filtro)
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+    
+    elif(filtro == 'genero'):
+        producto = get_object_or_404(Genero, id=id)
+        data = {
+            'form' : GeneroForm(instance=producto)
+        }
+
+        if request.method == 'POST':
+            formulario = GeneroForm(data=request.POST, instance=producto, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                return redirect(to="listar_productos", filtro=filtro)
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
+    
+    elif(filtro == 'aro'):
+        producto = get_object_or_404(Aro, id=id)
+        data = {
+            'form' : AroForm(instance=producto)
+        }
+
+        if request.method == 'POST':
+            formulario = AroForm(data=request.POST, instance=producto, files=request.FILES)
+            if formulario.is_valid():
+                formulario.save()
+                return redirect(to="listar_productos", filtro=filtro)
+            else:
+                data["form"] = formulario
+                data["mensaje"] = "Error"
     return render(request, "Admin/Modificar.html", data)
 
-def eliminar_producto(request, id):
-    producto = get_object_or_404(Producto, id=id) 
-    producto.delete()
-    return redirect(to="listar_productos")
+def eliminar_producto(request, filtro, id):
+    if(filtro == 'producto'):
+        producto = get_object_or_404(Producto, id=id) 
+        producto.delete()
+        return redirect(to="listar_productos", filtro=filtro)
+    
+    elif(filtro == 'marca'):
+        producto = get_object_or_404(Marca, id=id) 
+        producto.delete()
+        return redirect(to="listar_productos", filtro=filtro)
+    
+    elif(filtro == 'modelo'):
+        producto = get_object_or_404(Modelo, id=id) 
+        producto.delete()
+        return redirect(to="listar_productos", filtro=filtro)
+    
+    elif(filtro == 'genero'):
+        producto = get_object_or_404(Genero, id=id) 
+        producto.delete()
+        return redirect(to="listar_productos", filtro=filtro)
+    
+    elif(filtro == 'aro'):
+        producto = get_object_or_404(Aro, id=id) 
+        producto.delete()
+        return redirect(to="listar_productos", filtro=filtro)
 
 #CRUD Carrito
 def agregar_producto_carrito(request, producto_id):

@@ -5,7 +5,7 @@
 {% block link %}
 <link rel="stylesheet" href="https://assets.btcdn.co/res/css/customer.css?1686327298">
 {% endblock %}
-{% block content %}
+<!--
 
 
   
@@ -15,16 +15,23 @@
   
     <div id="caja" class="container" >
   <h2>Ingresa tus datos para crear tu cuenta</h2>
+-->
+{% block content %}
+  <div id="wrapper">
+  <body cz-shortcut-listen="true">
+    
+    
+      <div class="container">
+        <div class="box">
+          <h2>Ingresa tus datos para crear tu cuenta</h2>
 
-  <p>En la próxima página podrás crear una contraseña.</p>
 
+    <div class="slider">
+      <form action="" method="post">
+        <fieldset>
 
-  <div class="slider">
-    <form action="" method="post">
-      <fieldset>
-
-        {% csrf_token %}
-        {{ form.as_p }}
+          {% csrf_token %}
+          {{ form.as_p }}
 
 
         <p class="submit">

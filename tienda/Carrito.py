@@ -4,7 +4,7 @@ class CarritoManager:
     def __init__(self, request):
         self.request = request
         if request.user.is_authenticated:
-            self.carrito, created = Carrito.objects.get_or_create(user=request.user)
+            self.carrito, _ = Carrito.objects.get_or_create(user=request.user)
         else:
             self.session = request.session
             carrito = self.session.get("carrito")

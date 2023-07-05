@@ -31,6 +31,7 @@ urlpatterns = [
     path('', views.home, name="Home"),
     path('Producto/', views.producto, name="Producto"),
     path('Filtro/<str:filtro>', views.filtro, name="filtro"),
+    path('Categoria/<str:id_categoria>/', views.categoria, name='categoria'),
     path('Buscar/', views.buscar_productos, name="buscar_productos"),
     path('Detalles/<int:producto_id>/', views.detalles, name='detalles'),
     path('Bodega/', views.bodega),
@@ -38,12 +39,12 @@ urlpatterns = [
     path('Administrador/', views.administrador, name='Admin'),
 
     #Rutas para el Crud que tendra django (Actualemente pueden tener cambios segun se requiera)
-    path('Agregar-Producto/', views.agregar_producto, name='agregar_producto'),
-    path('Listar-Producto/', views.listar_productos, name='listar_productos'),
-    path('Modificar-Producto/<id>/', views.modificar_producto, name='modificar_producto'),
-    path('Eliminar-Producto/<id>/', views.eliminar_producto, name='eliminar_producto'),
+    path('Agregar-Producto/<str:filtro>/', views.agregar_producto, name='agregar_producto'),
+    path('Listar-Producto/<str:filtro>/', views.listar_productos, name='listar_productos'),
+    path('Modificar-Producto/<str:filtro>/<id>/', views.modificar_producto, name='modificar_producto'),
+    path('Eliminar-Producto/<str:filtro>/<id>/', views.eliminar_producto, name='eliminar_producto'),
 
-    #Rutas para el Crud que tendra django (Actualemente pueden tener cambios segun se requiera)
+    #Rutas para el Crud que tendra django carrito (Actualemente pueden tener cambios segun se requiera)
     path('Agregar/<int:producto_id>/', views.agregar_producto_carrito, name='agregar_producto_carrito'),
     path('Restar/<int:producto_id>/', views.restar_producto_carrito, name='restar_producto_carrito'),
     path('Limpiar/', views.limpiar_producto_carrito, name='limpiar_producto_carrito'),
@@ -55,6 +56,7 @@ urlpatterns = [
     path('Registro/', views.registro, name='registro'),
     path('login/', views.LoginCustom.as_view(), name='login'),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.IMG_URL, document_root=settings.IMG_ROOT)

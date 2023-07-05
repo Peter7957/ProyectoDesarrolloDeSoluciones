@@ -38,11 +38,11 @@ class Modelo(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=50)
     descripcion = models.TextField()
-    marca = models.ForeignKey(Marca, on_delete=models.PROTECT)
-    aro = models.ForeignKey(Aro,on_delete=models.PROTECT)
-    genero = models.ForeignKey(Genero,null=True,on_delete=models.PROTECT)
+    marca = models.ForeignKey(Marca,null=True, on_delete=models.SET_NULL)
+    aro = models.ForeignKey(Aro,null=True,on_delete=models.SET_NULL)
+    genero = models.ForeignKey(Genero,null=True,on_delete=models.SET_NULL)
     cantidad = models.IntegerField()
-    modelo = models.ForeignKey(Modelo, null=True, on_delete=models.PROTECT)
+    modelo = models.ForeignKey(Modelo, null=True, on_delete=models.SET_NULL)
     precio = models.IntegerField()
     imagen = models.ImageField(upload_to="productos", null=True)
 

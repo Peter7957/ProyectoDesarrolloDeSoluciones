@@ -26,22 +26,8 @@
         <h3 class="d-flex justify-content-center">Elige tu bici</h3>
           
          -->
+  
       </a>
-
-
-        <div class="search-form">
-            <input type="search" id="search-box" placeholder="Buscar productos" action="{% url 'buscar_productos' %}"name="query" value="{{ request.GET.query }}">
-            <button class="btn btn-primary active" type="submit">Buscar</button>    
-        </div>
-   
-    
-          <a class="Perso col-md-1 m-3 d-flex justify-content-center material-symbols-outlined " href="{% url 'login' %}">
-              person
-          </a>
-          <a class="Carro fas fa-shopping-cart col-md-1 m-3 d-flex justify-content-center material-symbols-outlined " id="cart-btn"></a>
-
-        
-   
 
     <ul class="nav nav-tabs ">
       <li id="NavInicio" class="nav-item">  
@@ -64,25 +50,30 @@
               -->
             </div>
           </div>
-
         </ul>
       </li>
     </div>
 
-      <!--
+
+
     </div>
       <div id="Nav3" class="nav nav-tabs">
-        <a class="nav-link" aria-current="page" href="{% url 'agregar_producto' %}">Agregar</a>
-        <a class="nav-link" aria-current="page" href="{% url 'listar_productos' %}">Listar</a>
-    
         {% if user.is_authenticated %}
         <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
-        <a class="nav-link" href="#">{{ user.username}}</a>
+        {% if user.perfil  == 'administrador' %}
+        <a class="nav-link" href="{% url 'Admin' %}">{{ user.username}}</a>
+        {% endif %}
+        {% if user.perfil  == 'cliente' %}
+          <a class="nav-link" href="{% url 'Cliente' %}">{{ user.username}}</a>
+          {% endif %}
+          {% if user.perfil  == 'bodeguero' %}
+          <a class="nav-link" href="{% url 'Bodeguero' %}">{{ user.username}}</a>
+          {% endif %}
         {% else %}
         {% endif %}
         </div>
         </div>
-        -->
+
         </div>
       </nav>
     </ul> 
