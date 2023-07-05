@@ -26,7 +26,7 @@
     margin-bottom: 5%;
 }
 header {
-    background-color: #006494;
+    background-COLOR: #8ac2e2;
 }
 #NavInicio a:hover {
     background-color:rgba(41, 176, 214, 0.964);
@@ -34,27 +34,78 @@ header {
 .Nav2 a:hover {
     background-color:rgba(41, 176, 214, 0.964);
 }
+.search-form{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    transform-origin: top;
+}
+.Carro{
+    position: absolute;
+    top: 2%;
+    right: 5%;
+    width: 15rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    transform-origin: top;
+    font-size: 40px;
+}
+.Perso{
+    position: absolute;
+    top: 1%;
+    right: 5%;
+    width: 5rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    transform-origin: top;
+    font-size: 40px;
+}
 #color {
     color: rgb(195, 221, 227);
     background-color:#6b9ac4;
 }
-#fondo1 {
-    background-color: red;
-}
 #fondo2 {
-    background-color: rgb(16, 103, 157);
+    background-color: rgb(52, 137, 190);
 }
 #Nav3 a:hover {
     background-color:rgba(41, 176, 214, 0.964);
 }
 body{
-    background-COLOR: #0582ca;
+    background-COLOR: #b0d1e4;
 }
-.footer h4{
-    background-color: rgb(8, 98, 161);
+.footer h4{ 
+
+    background-color: rgb(108, 189, 247);
 }
 #caja{
     position: relative;
     padding-top: 5rem;
     padding-bottom: 15rem;
+}
+.footer{
+    background-COLOR: #8ac2e2;
+    text-align: center;
+}
+
+.footer .share{
+    padding: 1rem;
+}
+.footer .share a{
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    margin: .3rem;
+    border-radius: 50%;
+
+}
+.footer .share a:hover{
+    background-color: #40c7de;
+
 }
