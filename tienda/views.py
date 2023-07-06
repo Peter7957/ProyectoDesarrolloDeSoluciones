@@ -5,6 +5,9 @@ from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero
 from .forms import ProductoForm, MarcaForm, ModeloForm, GeneroForm, AroForm,  CustomUserCreationForm
 from .Carrito import CarritoManager
 from django.contrib import messages
+from django.db.models.functions import Lower
+from django.db.models import Q
+
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
@@ -36,23 +39,38 @@ def producto(request):
     return render(request, "Producto/Producto.html", data)
 
 def buscar_productos(request):
-    if 'query' in request.GET:
-        query = request.GET['query']
-        productos = Producto.objects.filter(nombre__icontains=query)
-    else:
-        productos = Producto.objects.all()
-    
+    #if 'query' in request.GET:
+    #    query = request.GET['query']
+    #    productos = Producto.objects.filter(nombre__icontains=query)
+    #else:
+    #    productos = Producto.objects.all()
+    #
+    #context = {
+    #    'productos': productos
+    #}
+    if request.method == 'POST':
+        query = request.POST.get('query')
+        print(query)
+
+        if query:
+            palabras = query.split()
+            print("palabras", palabras)
+            q_lookup = Q()
+            for palabra in palabras:
+                q_lookup |= Q(nombre__icontains=palabra.lower())
+                print(q_lookup)
+            productos = Producto.objects.filter(q_lookup)
+        else:
+            productos = Producto.objects.all()
+
     context = {
-        'productos': productos
+        'productos': productos,
+        'query': query
     }
     return render(request, 'Producto/buscar_productos.html', context)
 
-def categoria(request, id_categoria):
-    #producto = Producto.objects.get(id=id_categoria)
-    productos = Producto.objects.filter(nombre=id_categoria)
-    data = {'productos' : productos}
+
     
-    return render(request, "Producto/Categoria.html", data)
 
 def detalles(request, producto_id):
     #INVESTIGAR ACERCA DE ESTA OPCION
@@ -359,3 +377,12 @@ def filtro(request, filtro):
         'filtrar': filtrar
     }
     return render(request, "Producto/Filtro.html", data)
+
+def categoria(request, id):
+    #producto = Producto.objects.get(id=id_categoria)
+    #f = filtro.lower()
+    #print(f)
+    productos = Producto.objects.filter(marca_id=id)
+    data = {'productos' : productos}
+
+    return render(request, "Producto/Categoria.html", data)

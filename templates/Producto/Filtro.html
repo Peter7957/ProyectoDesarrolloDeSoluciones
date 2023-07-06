@@ -7,6 +7,7 @@
                 <div class="card col-md-3 m-1 my-2">
                     <a href="{% url 'categoria' f.id %}">
                         <img src="{{ f.imagen.url }}" class="card-img-top" alt="{{ f.nombre }}">
+                        <p>{{f.nombre}}</p>
                     </a>
                 </div>
             {% endfor %}

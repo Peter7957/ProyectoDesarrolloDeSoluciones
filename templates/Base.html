@@ -16,11 +16,14 @@
     {% endblock %}
   </head>
 <header>
-  
-  <div class="search-form">
-    <input type="text" id="search-box" placeholder="Buscar productos"value="{{ request.GET.query }}">
-    <button class="btn btn-primary active" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
-  </div>
+
+  <form class="col-md-8 m-3 d-flex" method="POST" action="{% url 'buscar_productos' %}">
+    {% csrf_token %}
+    <div class="search-form">
+      <input type="text" id="search-box" placeholder="Buscar productos" name="query">
+      <button class="btn btn-primary active" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
+    </div>
+  </form>
 
 
   <a class="Carro fas fa-shopping-cart d-flex justify-content-center material-symbols-outlined" id="cart-btn"></a>
