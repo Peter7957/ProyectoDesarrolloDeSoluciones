@@ -333,6 +333,8 @@ def limpiar_producto_carrito(request):
     carrito.limpiar()
     return redirect("Producto")
 
+def carrito(request):
+    return render(request, "Producto/Carrito.html")
 
 #Registros e Inicio de sesión
 def registro(request):
