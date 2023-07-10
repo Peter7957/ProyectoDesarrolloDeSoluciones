@@ -18,7 +18,9 @@
         <br/>
 
             <section  class="imaproCon">
+
               {% include "./Carrito.html" %}
+
               <section class="container d-flex justify-content-around flex-wrap">
 
                 {% for p in productos %}
@@ -31,6 +33,9 @@
                     <p class="card-text">{{ p.descripcion }}</p>
                     <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
                       <button class="boton rounded-start rounded-end ">Carrito</button>
+                    </a>
+                    <a href="{% url 'Pago' %}">
+                      <button class="boton rounded-start rounded-end ">Pagar</button>
                     </a>
                   </div>
                 </div>

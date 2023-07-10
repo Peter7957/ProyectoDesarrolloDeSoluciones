@@ -25,6 +25,9 @@ def home(request):
 def bodega(request):
     return render(request, "Bodega/Bodega.html")
 
+def pago(request):
+    return render(request, "Producto/Pago.html")
+
 def cliente(request):
     return render(request, "Cliente/Cliente.html")
 
