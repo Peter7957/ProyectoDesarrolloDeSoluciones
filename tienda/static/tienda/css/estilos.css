@@ -107,5 +107,8 @@ body{
 .carousel-inner img {
     max-width: 70%;  
     margin: 0 auto;  
-  }
+}
+.box{
+    background-color: #500811;
+}
  

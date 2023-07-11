@@ -18,12 +18,61 @@
     {% endblock %}
   </head>
 <header>
+<<<<<<< HEAD
 
   <form class="col-md-8 m-3 d-flex" method="POST" action="{% url 'buscar_productos' %}">
     {% csrf_token %}
     <div class="search-form">
       <input type="text" id="search-box" placeholder="Buscar productos" name="query">
       <button class="btn btn-primary active" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
+=======
+  <nav id="NavInicio" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <img id="Logo"class="rounded-pill" src="{% static 'tienda/img/Logo.png' %}" alt="" srcset="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <form id="Buscar"class="d-flex" role="search">
+            <input class="form-control me-5" type="search" placeholder="Buscar productos" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
+          </form>  
+        <form class="d-flex">
+          <a class="Carro fas fa-shopping-cart d-flex justify-content-center material-symbols-outlined"></a>
+          <a class="Perso d-flex justify-content-center material-symbols-outlined" href="{% url 'login' %}">
+           person</a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+  <nav id="NavInicio" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" aria-current="page" href="{% url 'Home' %}">Inicio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Quienes Somos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Productos
+            </a>
+            <ul id="FondoNavPro"class="dropdown-menu">
+              <li><a class="dropdown-item" aria-current="page" href="{% url 'Producto' %}""#simple-list-item-1">Catalogo</a></li>
+              <li><a class="dropdown-item" href="{% url 'filtro' 'marca' %}">Marca</a></li>
+              <li><a class="dropdown-item" href="{% url 'filtro' 'modelo' %}">Modelo</a></li>
+              <li><a class="dropdown-item" href="{% url 'filtro' 'genero' %}">Genero</a></li>
+              <li><a class="dropdown-item" href="{% url 'filtro' 'aro' %}">Aro</a>
+            </ul>
+          </li>
+        </ul>
+      </div>
+>>>>>>> dd8e3060199cc128a4d868249d46ae936e29eef8
     </div>
   </form>
 
