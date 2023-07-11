@@ -108,7 +108,49 @@ body{
     max-width: 70%;  
     margin: 0 auto;  
 }
-.box{
-    background-color: #500811;
+#pago {
+    width: 400px;
+    margin: 0 auto;
+}
+label {
+    display: block;
+    margin-top: 10px;
+}
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.payment-options {
+    margin-top: 20px;
+}
+.payment-options p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.payment-options a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+}
+.payment-options img {
+    width: 100px;
+    height: auto;
+}
+.payment-options{
+    width: 100px;
+    height: auto;
 }
  
