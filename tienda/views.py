@@ -25,6 +25,9 @@ def home(request):
 def bodega(request):
     return render(request, "Bodega/Bodega.html")
 
+def pago(request):
+    return render(request, "Producto/Pago.html")
+
 def cliente(request):
     return render(request, "Cliente/Cliente.html")
 
@@ -330,6 +333,8 @@ def limpiar_producto_carrito(request):
     carrito.limpiar()
     return redirect("Producto")
 
+def carrito(request):
+    return render(request, "Producto/Carrito.html")
 
 #Registros e Inicio de sesión
 def registro(request):

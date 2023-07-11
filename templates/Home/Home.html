@@ -17,6 +17,9 @@
                         <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
                             <button class="boton rounded-start rounded-end ">Carrito</button>
                         </a>
+                        <a href="{% url 'Pago' %}">
+                          <button class="boton rounded-start rounded-end ">Pagar</button>
+                        </a>
                     </div>
                 </div>
             {% endfor %}
