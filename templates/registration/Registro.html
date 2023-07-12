@@ -1,9 +1,6 @@
 {% extends '../Base.html' %}
 {% load static %}
-{% block css %}
-{% endblock %}
-{% block link %}
-{% endblock %}
+{% load crispy_forms_tags %}
 <!--
 
 
@@ -30,7 +27,7 @@
         <fieldset>
 
           {% csrf_token %}
-          {{ form.as_p }}
+          {{ form| crispy }}
 
 
         <p class="submit">
