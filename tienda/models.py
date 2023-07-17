@@ -44,7 +44,7 @@ class Producto(models.Model):
     cantidad = models.IntegerField()
     modelo = models.ForeignKey(Modelo, null=True, on_delete=models.SET_NULL)
     precio = models.IntegerField()
-    imagen = models.ImageField(upload_to="productos", null=True)
+    imagen = models.ImageField(upload_to="Producto", null=True)
     
     def __str__(self):
         return self.nombre
