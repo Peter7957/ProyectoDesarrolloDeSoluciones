@@ -1,4 +1,4 @@
-let Carro = document.querySelector('.Carro');
+let Carro = document.querySelector('.Carrito');
 document.querySelector('#cart-btn').onclick =() =>{
     cartItem.classList.toggle('active');
     navbar.classList.remove('active'); 

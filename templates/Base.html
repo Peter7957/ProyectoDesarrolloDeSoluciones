@@ -20,25 +20,38 @@
 <header>
   <nav id="NavInicio" class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <img id="Logo"class="rounded-pill" src="{% static 'tienda/img/Logo.png' %}" alt="" srcset="">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <div>
+        <img id="Logo"class="rounded-pill" src="{% static 'tienda/img/Logo.png' %}" alt="" srcset="">
+      </div>
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
           <form id="Buscar"class="d-flex" role="search">
             <input class="form-control me-5" type="search" placeholder="Buscar productos" aria-label="Search">
             <button class="btn btn-outline-success" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
           </form>  
-        <form class="d-flex">
-          <a class="Carro fas fa-shopping-cart d-flex justify-content-center material-symbols-outlined"></a>
+
+        </div>
+        <div class="d-flex justify-content-center">
+
+          <a class="Carro fas d-flex justify-content-center fa-shopping-cart material-symbols-outlined" id="art-btn" ></a>
           <a class="Perso d-flex justify-content-center material-symbols-outlined" href="{% url 'login' %}">
           person</a>
-        </form>
-      </div>
+        </div>
+      
     </div>
   </nav>
-  
+  <dialog>
+    {% include "Producto/Carrito.html" %}
+  </dialog>
+
+  <script>
+    document.querySelector("#art-btn").addEventListener("click", (e) =>{
+      document.querySelector("dialog").showModal();
+    })
+  </script>
   <nav id="NavInicio" class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" aria-current="page" href="{% url 'Home' %}">Inicio</a>
