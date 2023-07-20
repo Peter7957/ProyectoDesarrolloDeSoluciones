@@ -4,15 +4,36 @@
 
 {% block content %}
     <div class="container d-flex flex-column align-items-center">
-        <h2>Factura de Compra</h2>
+        
 
-    <table class="d-block">
+    <table class="table table-light mx-auto">
+        <tr>
+            <td colspan="4">
+                <h2 class="text-center">Factura de Compra</h2>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                Encuentra la bici perfecta para ti en EligeTuBici, ¡tu camino hacia una aventura sobre ruedas!
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <div class="d-flex justify-content-around">
+                    <p>Titular: {{ user }}</p>
+        
+                    <p>Fecha de la factura: {{ factura.fecha }}</p>
+                    <p>Folio: {{ factura.id }}</p>
+                </div>
+            </td>
+        </tr>
         <tr>
             <th>Producto</th>
             <th>Cantidad</th>
             <th>Precio unitario</th>
             <th>Subtotal</th>
         </tr>
+        
         {% for item in items_carrito %}
         <tr>
             <td>{{ item.producto.nombre }}</td>
@@ -21,12 +42,17 @@
             <td>${{ item.cantidad|mul:item.producto.precio }}</td>
         </tr>
         {% endfor %}
+        <tr>
+            <td colspan="2"></td>
+            <td>Total: </td>
+            <td >
+                <p>${{ total }}</p>
+            </td>
+        </tr>
     </table>
-
-    <p>Total: ${{ total }}</p>
-
-    <p>Titular de la tarjeta: {{ user }}</p>
-
+    <a href="{% url 'Home' %}">
+        <button class="btn btn-success">Volver</button>
+    </a>
     </div>
     
     {% endblock %}

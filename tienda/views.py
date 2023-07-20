@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import JsonResponse
 import json
-from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero, Carrito, ItemCarrito
+from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero, Carrito, ItemCarrito, Factura, ListaFacturas
 from .forms import ProductoForm, MarcaForm, ModeloForm, GeneroForm, AroForm,  CustomUserCreationForm
 from django.contrib import messages
 from django.db.models.functions import Lower
@@ -431,10 +431,26 @@ def factura(request):
     for item in items_carrito:
         subtotal = item.producto.precio * item.cantidad
         total += subtotal
+    
+    factura = Factura(usuario=request.user, total=total)
+    factura.save()
 
     context = {
+        'carrito': carrito,
         'items_carrito': items_carrito,
         'total': total,
+        'factura': factura,
     }
 
     return render(request, 'Producto/Factura.html', context)
+
+def detalle_factura(request, factura_id):
+    factura = get_object_or_404(Factura, id=factura_id, usuario=request.user)
+    items_carrito = factura.usuario.carrito.itemcarrito_set.all()
+
+    context = {
+        'factura': factura,
+        'items_carrito': items_carrito,
+    }
+
+    return render(request, 'Producto/DetallesFactura.html', context)

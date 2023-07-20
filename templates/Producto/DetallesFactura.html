@@ -1,0 +1,23 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles de la Factura {{ factura.id }}</title>
+</head>
+<body>
+    <h2>Detalles de la Factura {{ factura.id }}</h2>
+    <h2>Cliente: {{ factura.usuario }}</h2>
+    <p>Fecha de la factura: {{ factura.fecha }}</p>
+    <p>Total: ${{ factura.total }}</p>
+
+    <h3>Productos:</h3>
+    <ul>
+        {% for item in items_carrito %}
+        <li>{{ item.producto.nombre }} - Cantidad: {{ item.cantidad }} - Subtotal: ${{ item.producto.precio|mul:item.cantidad }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Agrega cualquier otro detalle de la factura que desees mostrar aquí -->
+</body>
+</html>
