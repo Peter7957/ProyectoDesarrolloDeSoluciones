@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import JsonResponse
 import json
-from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero
+from .models import Producto, CustomUser, Modelo, Marca, Aro, Genero, Carrito, ItemCarrito
 from .forms import ProductoForm, MarcaForm, ModeloForm, GeneroForm, AroForm,  CustomUserCreationForm
-from .Carrito import CarritoManager
 from django.contrib import messages
 from django.db.models.functions import Lower
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 from django.contrib.auth import authenticate, login
@@ -16,7 +16,7 @@ from .models import CustomUser
 
 #Rutas 
 def home(request):
-    producto = Producto.objects.order_by('-id')[:3]
+    producto = Producto.objects.order_by('-id')[:6]
     data ={
         "productos": producto,
     }
@@ -42,22 +42,12 @@ def producto(request):
     return render(request, "Producto/Producto.html", data)
 
 def buscar_productos(request):
-    #if 'query' in request.GET:
-    #    query = request.GET['query']
-    #    productos = Producto.objects.filter(nombre__icontains=query)
-    #else:
-    #    productos = Producto.objects.all()
-    #
-    #context = {
-    #    'productos': productos
-    #}
     if request.method == 'POST':
         query = request.POST.get('query')
         print(query)
 
         if query:
             palabras = query.split()
-            print("palabras", palabras)
             q_lookup = Q()
             for palabra in palabras:
                 q_lookup |= Q(nombre__icontains=palabra.lower())
@@ -309,29 +299,6 @@ def eliminar_producto(request, filtro, id):
         producto.delete()
         return redirect(to="listar_productos", filtro=filtro)
 
-#CRUD Carrito
-def agregar_producto_carrito(request, producto_id):
-    carrito = CarritoManager(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.agregar(producto)
-    return redirect("Producto")
-    
-def eliminar_producto_carrito(request, producto_id):
-    carrito = CarritoManager(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.eliminar(producto)
-    return redirect("Producto")
-
-def restar_producto_carrito(request, producto_id):
-    carrito = CarritoManager(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.restar(producto)
-    return redirect("Producto")
-
-def limpiar_producto_carrito(request):
-    carrito = CarritoManager(request)
-    carrito.limpiar()
-    return redirect("Producto")
 
 def carrito(request):
     return render(request, "Producto/Carrito.html")
@@ -391,3 +358,55 @@ def categoria(request, id):
     data = {'productos' : productos}
 
     return render(request, "Producto/Categoria.html", data)
+
+
+@login_required
+def agregar_al_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    carrito, _ = Carrito.objects.get_or_create(usuario=request.user)
+    item, _ = ItemCarrito.objects.get_or_create(carrito=carrito, producto=producto)
+    item.cantidad += 1
+    item.save()
+    return redirect('carrito')
+
+@login_required
+def mostrar_carrito(request):
+    try:
+        carrito = Carrito.objects.get(usuario=request.user)
+    except Carrito.DoesNotExist:
+        carrito = None
+
+    if carrito is None:
+        carrito = Carrito.objects.create(usuario=request.user)
+
+
+    items_carrito = carrito.itemcarrito_set.all()
+
+    total = 0
+    for item in items_carrito:
+        subtotal = item.producto.precio * item.cantidad
+        total += subtotal
+
+    context = {
+        'items_carrito': items_carrito,
+        'total': total,
+    }
+
+    return render(request, 'Producto/CarritoLog.html', context)
+
+@login_required
+def eliminar_del_carrito(request, item_id):
+    item = get_object_or_404(ItemCarrito, id=item_id, carrito__usuario=request.user)
+    item.delete()
+    return redirect('carrito')
+
+@login_required
+def actualizar_cantidad(request, item_id):
+    item = get_object_or_404(ItemCarrito, id=item_id, carrito__usuario=request.user)
+    nueva_cantidad = int(request.POST.get('cantidad'))
+    if nueva_cantidad > 0:
+        item.cantidad = nueva_cantidad
+        item.save()
+    else:
+        item.delete()
+    return redirect('carrito')

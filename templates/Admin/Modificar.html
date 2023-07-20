@@ -1,18 +1,21 @@
-{% extends '../Base.html' %}
+{% extends './Administrador.html' %}
+
 {% load crispy_forms_tags %}
 
-{% block content %}
-
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-    
+{% block admin %}
+    <div class="container w-75">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
         
-        {{ form | crispy }}
+            
+            {{ form | crispy }}
+    
+            <input type="reset" value="Cancelar">
+            <input type="submit" value="Editar">
+    
+        </form>
+        {{ mensaje }}
+    </div>
+    
 
-        <input type="reset" value="Cancelar">
-        <input type="submit" value="Editar">
-
-    </form>
-    {{ mensaje }}
-
-{% endblock %}
+{% endblock admin %}

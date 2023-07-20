@@ -1,32 +1,40 @@
-{% extends '../../Base.html' %}
+{% extends '../Administrador.html' %}
 
-{% block content %}
+{% block admin %}
 
 <div class="container">
-    <h2>Lista de Productos</h2>
+    <h2 class="text-center align-middle">Lista de Productos</h2>
     <table class="table">
       <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Marca</th>
-            <th>Modificar</th>
-            <th>Img</th>
+            <th class="text-center align-middle">Nombre</th>
+            <th class="text-center align-middle">Precio</th>
+            <th class="text-center align-middle">Marca</th>
+            <th class="text-center align-middle">Img</th>
+            <th class="text-center align-middle">Modificar</th>
         </tr>
       </thead>
       <tbody>
         {% for prod in producto %}
         <tr>
-            <td>{{prod.nombre}}</td>
-            <td>{{prod.precio}}</td>
-            <td>{{prod.marca}}</td>
-            <td><img src="{{prod.imagen.url}}" alt="">{{prod.imagen}}</td>
-            <td><a href="{% url 'modificar_producto' filtro='producto' id=prod.id %}">modificar</a></td>
-            <td><a href="{% url 'eliminar_producto' filtro='producto' id=prod.id %}">eliminar</a></td>
+            <td class="text-center align-middle w-25">{{prod.nombre}}</td>
+            <td class="text-center align-middle w-25">{{prod.precio}}</td>
+            <td class="text-center align-middle w-25">{{prod.marca}}</td>
+            <td class="text-center align-middle w-25"><img src="{{prod.imagen.url}}" class="w-100 rounded mx-auto d-block" alt=""></td>
+            <td class="text-center align-middle"><a href="{% url 'modificar_producto' filtro='producto' id=prod.id %}">
+              <span class="material-symbols-outlined">
+                box_edit
+                </span>
+            </a></td>
+            <td class="text-center align-middle"><a href="{% url 'eliminar_producto' filtro='producto' id=prod.id %}">
+              <span class="material-symbols-outlined">
+                delete
+                </span>
+            </a></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <!-- product_list.html -->
+</div><!-- product_list.html -->
 
 {% endblock %}

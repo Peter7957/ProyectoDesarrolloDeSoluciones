@@ -29,7 +29,7 @@ class Genero(models.Model):
 
 class Modelo(models.Model):
     nombre = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=350, null=True)
+    descripcion = models.CharField(max_length=340, null=True)
     imagen = models.ImageField(upload_to="Modelo", null=True)
 
     def __str__(self):
@@ -73,8 +73,10 @@ class CustomUser(AbstractUser):
     )
 
 class Carrito(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    productos = models.ManyToManyField(Producto)
+    usuario = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    productos = models.ManyToManyField(Producto, through='ItemCarrito')
 
-    def __str__(self):
-        return f"Carrito de {self.user.username}"
+class ItemCarrito(models.Model):
+    carrito = models.ForeignKey(Carrito, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=0)

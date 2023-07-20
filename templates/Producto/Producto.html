@@ -3,18 +3,11 @@
 {% block css %}
 {% endblock %}
 {% block content %}
-
-<!DOCTYPE html>
-<html>
-</br>
-<head>
-</head>
 <body>
-    <main>
+  <main>
     <div class="row">
       <div data-bs-spy="scroll" data-bs-target="#simple-list-example" data-bs-offset="0" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
         <h1 class="d-flex justify-content-center simple-list-item-1">Catalogo</h1>
-        <br/>
         <br/>
 
             <section  class="imaproCon">
@@ -22,18 +15,22 @@
 
                 {% for p in productos %}
                 <div class="card col-md-3 m-1 my-2">
-                  <a href="{% url 'detalles' producto_id=p.id %}">
-                    <img src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
-                  </a>
+                  <div class="w-100" style="min-height: 280px;">
+                    <a href="{% url 'detalles' producto_id=p.id %}">
+                      <img src="{{ p.imagen.url }}" class="card-img-top " alt="{{ p.nombre }}">
+                    </a>
+                  </div>
                   <div class="card-body">
                     <h5 class="card-title">{{ p.nombre }}</h5>
-                    <p class="card-text">{{ p.descripcion }}</p>
-                    <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
-                      <button class="boton rounded-start rounded-end ">Carrito</button>
-                    </a>
-                    <a href="{% url 'Pago' %}">
-                      <button class="boton rounded-start rounded-end ">Pagar</button>
-                    </a>
+                    <p class="card-text">$ {{ p.precio }}</p>
+                    <div class="d-flex w-100 justify-content-around align-bottom" style="height: 50px;">
+                      <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
+                        <button class="btn btn-secondary" style="width: 90px;">Carrito</button>
+                      </a>
+                      <a href="{% url 'Pago' %}">
+                        <button class="btn btn-success" style="width: 90px;">Pagar</button>
+                      </a>
+                    </div>
                   </div>
                 </div>
 

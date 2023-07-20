@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<h2>Metodos De Pago</h2>
+<h2 class="text-center">Metodos De Pago</h2>
 
 <form id="pago">
 <section>   
@@ -22,9 +22,11 @@
 
     <input type="number" id="cvv" name="cvv" min="3" max="4" required>
 </section>    
-<section class="payment-options">     
+<br>
+<p>Métodos de pago:</p>
+<section class="payment-options d-flex">     
 
-    <p>Métodos de pago:</p>
+    
 
     <a href="stripe_payment.html"><img src="{% static 'tienda/img/stripe.png' %}" alt="Stripe"></a>
 

@@ -38,7 +38,6 @@ urlpatterns = [
     path('Cliente/', views.cliente, name='Cliente'),
     path('Administrador/', views.administrador, name='Admin'),
     path('Pago/', views.pago, name='Pago'),
-    path('Carrito/', views.carrito, name='Carrito'),
 
     #Rutas para el Crud que tendra django (Actualemente pueden tener cambios segun se requiera)
     path('Agregar-Producto/<str:filtro>/', views.agregar_producto, name='agregar_producto'),
@@ -47,10 +46,15 @@ urlpatterns = [
     path('Eliminar-Producto/<str:filtro>/<id>/', views.eliminar_producto, name='eliminar_producto'),
 
     #Rutas para el Crud que tendra django carrito (Actualemente pueden tener cambios segun se requiera)
-    path('Agregar/<int:producto_id>/', views.agregar_producto_carrito, name='agregar_producto_carrito'),
-    path('Restar/<int:producto_id>/', views.restar_producto_carrito, name='restar_producto_carrito'),
-    path('Limpiar/', views.limpiar_producto_carrito, name='limpiar_producto_carrito'),
-    path('Eliminar/<int:producto_id>/', views.eliminar_producto_carrito, name='eliminar_producto_carrito'),
+    #path('Agregar/<int:producto_id>/', views.agregar_producto_carrito, name='agregar_producto_carrito'),
+    #path('Restar/<int:producto_id>/', views.restar_producto_carrito, name='restar_producto_carrito'),
+    #path('Limpiar/', views.limpiar_producto_carrito, name='limpiar_producto_carrito'),
+    #path('Eliminar/<int:producto_id>/', views.eliminar_producto_carrito, name='eliminar_producto_carrito'),
+
+    path('agregar/<int:producto_id>/', views.agregar_al_carrito, name='agregar_producto_carrito'),
+    path('Carrito/', views.mostrar_carrito, name='carrito'),
+    path('eliminar/<int:item_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
+    path('actualizar/<int:item_id>/', views.actualizar_cantidad, name='actualizar_cantidad'),
 
     #Ruta para el Login (este esta conectado con la ruta templates/login.html) y no require de views.py 
     #se importa directamente de 'django.contrib.auth.urls' 

@@ -1,0 +1,76 @@
+{% extends '../Base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Carrito de Compras</h1>
+    <br>
+    <br>
+
+    <table class="table table-light w-75 mx-auto">
+        <thead>
+            <th class="text-center" scope="col" colspan="2">Producto</th>
+            <th class="text-center" scope="col">Precio</th>
+            <th class="text-center" scope="col">Cantidad</th>
+            <th class="text-center" scope="col">SubTotal</th>
+            <th class="text-center" scope="col"></th>
+        </thead>
+        <tbody>
+            {% with total=0 %}
+            {% for item in items_carrito %}
+            <tr>
+                <td class="w-25">
+                    <img src="{{ item.producto.imagen.url }}" class="w-75 rounded mx-auto d-block" alt="{{ item.producto.nombre }}">
+                </td>
+                <td class="text-center align-middle">{{ item.producto.nombre }}</td>
+                <td class="text-center align-middle">${{ item.producto.precio }}</td>
+                <td class="text-center align-middle">
+                    <form method="POST" action="{% url 'actualizar_cantidad' item.id %}">
+                        {% csrf_token %}
+                        <input class="w-50 text-center" type="number" name="cantidad" value="{{ item.cantidad }}" min="1">
+                        <!--
+                        <button type="submit">Actualizar</button>
+                        -->
+                    </form>
+                </td>
+                <td class="text-center align-middle">${{ item.producto.precio|mul:item.cantidad }}</td>
+                <td class="text-center align-middle">
+                    <a class="py-3 align-middle" href="{% url 'eliminar_del_carrito' item.id %}">
+                        <span class="material-symbols-outlined">
+                            delete
+                            </span>
+                    </a>
+                </td>
+            </tr>
+            {% with subtotal=item.producto.precio|mul:item.cantidad %}
+                {% with total=total|add:subtotal %}
+                {% endwith %}
+            {% endwith %}
+            {% endfor %}
+            {% endwith %}
+            <tr>
+                <td colspan="3"></td>
+                <td class="text-center"><strong>Total:</strong></td>
+                <td>${{ total }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+                <td class="d-flex justify-content-center">
+                    <a href="{% url 'Home' %}">
+                        <button class="btn btn-light ">Volver</button>
+                    </a>  
+                </td>
+                <td >
+                    <a href="{% url 'Pago' %}">
+                        <button class=" btn btn-success w-100">Pagar</button>
+                    </a>  
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    
+{% endblock %}

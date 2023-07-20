@@ -1,6 +1,6 @@
 #Logo{
-    width: 10%;
-    height: 10%;
+    width: 70%;
+    height: 70%;
 }
 #imgPrincipal{
     width: 100%;
@@ -53,7 +53,7 @@ header {
     padding: 10px;   
 }
 .Carro{
-    position: absolute;
+    position: relative;
     top: 7%;
     right: 1%;
     width: 5rem;
@@ -64,8 +64,8 @@ header {
     font-size: 30px;
 }
 .Perso{
-    position: absolute;
-    top: 0%;
+    position: relative;
+    top: 5%;
     right: 2%;
     width: 5rem;
     height: 4rem;
@@ -153,4 +153,3 @@ input[type="submit"] {
     width: 100px;
     height: auto;
 }
- 

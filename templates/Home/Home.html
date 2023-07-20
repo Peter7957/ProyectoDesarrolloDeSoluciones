@@ -6,24 +6,7 @@
 {% block content     %}
 <div class="row">
 
-        <div class="col-12 col-md-10 offset-md-1">
-            <div class="d-flex justify-content-around flex-wrap">
-            {% for p in productos %}
-                <div class="card col-md-3 m-1 my-2">
-                    <img src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ p.nombre }}</h5>
-                        <p class="card-text">{{ p.descripcion }}</p>
-                        <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
-                            <button class="boton rounded-start rounded-end ">Carrito</button>
-                        </a>
-                        <a href="{% url 'Pago' %}">
-                          <button class="boton rounded-start rounded-end ">Pagar</button>
-                        </a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+      <div class="col-12 col-md-10 offset-md-1">
         <main>
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
@@ -51,8 +34,35 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>         
-        </main>        
+        </main> 
+      <br><br>
+      <h3 class="text-center">Productos Nuevos</h3>
+      <br>
+      <div class="d-flex justify-content-around flex-wrap">
+        {% for p in productos %}
+            <div class="card col-md-3 m-1 my-2">
+              <div class="w-100" style="min-height: 260px;">
+                <a href="{% url 'detalles' producto_id=p.id %}">
+                  <img src="{{ p.imagen.url }}" class="card-img-top " alt="{{ p.nombre }}">
+                </a>
+              </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.nombre }}</h5>
+                    <p class="card-text">$ {{ p.precio }}</p>
+                    <div class="d-flex w-100 justify-content-around align-bottom" style="height: 50px;">
+                      <a href="{% url 'agregar_producto_carrito' producto_id=p.id %}">
+                        <button class="btn btn-secondary" style="width: 90px;">Carrito</button>
+                      </a>
+                      <a href="{% url 'Pago' %}">
+                        <button class="btn btn-success" style="width: 90px;">Pagar</button>
+                      </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
+    </div>
+
 </div>
 <script>
     $(document).ready(function() {

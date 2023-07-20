@@ -28,7 +28,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 
-          <form id="Buscar"class="d-flex" role="search">
+          <form id="Buscar"class="d-flex" role="search" action="{% url 'buscar_productos' %}">
             <input class="form-control me-5" type="search" placeholder="Buscar productos" aria-label="Search">
             <button class="btn btn-outline-success" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
           </form>  
@@ -36,22 +36,18 @@
         </div>
         <div class="d-flex justify-content-center">
 
-          <a class="Carro fas d-flex justify-content-center fa-shopping-cart material-symbols-outlined" id="art-btn" ></a>
+          <a class="Carro fas d-flex justify-content-center fa-shopping-cart material-symbols-outlined" href="{% url 'carrito' %}" ></a>
+          {% if user.is_authenticated %}
+          {% else %}
           <a class="Perso d-flex justify-content-center material-symbols-outlined" href="{% url 'login' %}">
-          person</a>
+            person</a>
+          {% endif %}
+          
         </div>
       
     </div>
   </nav>
-  <dialog>
-    {% include "Producto/Carrito.html" %}
-  </dialog>
-
-  <script>
-    document.querySelector("#art-btn").addEventListener("click", (e) =>{
-      document.querySelector("dialog").showModal();
-    })
-  </script>
+ 
   <nav id="NavInicio" class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" aria-current="page" href="{% url 'Home' %}">Inicio</a>
@@ -63,10 +59,13 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Quienes Somos</a>
           </li>
+
           <li class="nav-item dropdown">
+
             <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Productos
             </a>
+
             <ul id="FondoNavPro"class="dropdown-menu">
               <li><a class="dropdown-item" aria-current="page" href="{% url 'Producto' %}""#simple-list-item-1">Catalogo</a></li>
               <li><a class="dropdown-item" href="{% url 'filtro' 'marca' %}">Marca</a></li>
@@ -75,6 +74,32 @@
               <li><a class="dropdown-item" href="{% url 'filtro' 'aro' %}">Aro</a>
             </ul>
           </li>
+
+          <div class="d-flex justify-content-end">
+            {% if user.is_authenticated %}
+              {% if user.perfil  == 'administrador' %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'Admin' %}">{{ user.username}}</a>
+              </li>
+              {% endif %}
+
+              {% if user.perfil  == 'cliente' %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'Cliente' %}">{{ user.username}}</a>
+              </li>
+              {% endif %}
+
+              {% if user.perfil  == 'bodeguero' %}
+                <li class="nav-item">
+                  <a class="nav-link active" href="{% url 'Bodeguero' %}">{{ user.username}}</a>
+                </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link active" href="{% url 'logout' %}">Cerrar Sesion</a>
+              </li>
+            {% endif %}
+          </div>
+
         </ul>
       </div>
     </div>
@@ -90,28 +115,11 @@
         
 -->
 
-    </div>
-      <div id="Nav3" class="nav nav-tabs">
-        {% if user.is_authenticated %}
-          <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
-        {% if user.perfil  == 'administrador' %}
-          <a class="nav-link" href="{% url 'Admin' %}">{{ user.username}}</a>
-        {% endif %}
-
-        {% if user.perfil  == 'cliente' %}
-          <a class="nav-link" href="{% url 'Cliente' %}">{{ user.username}}</a>
-          {% endif %}
-          {% if user.perfil  == 'bodeguero' %}
-          <a class="nav-link" href="{% url 'Bodeguero' %}">{{ user.username}}</a>
-          {% endif %}
-        {% endif %}
-      </div>
-      </div>
-
         </div>
     </ul> 
   </header>
-
+    <br>
+    <br>
     {% block content %}
     
     {% endblock content %}

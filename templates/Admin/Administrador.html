@@ -1,37 +1,52 @@
 {% extends '../Base.html' %}
 {% block content %}
 
-<div class="Nav2 ">  
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{% url 'Producto' %}">Agregar</a>
-    <ul id="fondo2" class="dropdown-menu">
-      <div class="col-4 ">
-        <div id="fondo2" class="d-flex text-center">
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'producto' %}">Producto</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'marca' %}">Marca</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'modelo' %}">Modelo</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'genero' %}">Genero</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'aro' %}">Aro</a>
+<div class="container ">
+  <table class="table table-light w-75 mx-auto">
+    <thead>
+      <th class="d-flex justify-content-center">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Agregar
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'producto' %}">Producto</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'marca' %}">Marca</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'modelo' %}">Modelo</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'genero' %}">Genero</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'agregar_producto' 'aro' %}">Aro</a>
+          </ul>
         </div>
-      </div>
-    </ul>
-  </li>
-</div>
+      
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Modificar
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'producto' %}">Producto</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'marca' %}">Marca</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'modelo' %}">Modelo</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'genero' %}">Genero</a>
+            <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'aro' %}">Aro</a>
+          </ul>
+        </div>  
+      </th>
+      
 
-<div class="Nav2 ">  
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{% url 'Producto' %}">Listar</a>
-    <ul id="fondo2" class="dropdown-menu">
-      <div class="col-4 ">
-        <div id="fondo2" class="d-flex text-center">
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'producto' %}">Producto</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'marca' %}">Marca</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'modelo' %}">Modelo</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'genero' %}">Genero</a>
-          <a id="color" class="p-1 rounded nav-link " href="{% url 'listar_productos' 'aro' %}">Aro</a>
-        </div>
-      </div>
-    </ul>
-  </li>
-</div>
+    </thead>
+
+
+    <tbody>
+      <tr >
+        <td class="d-inline-block w-100" style="min-height: 300px;">
+          {% block admin %}
+          {% endblock admin %}
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  
+</div><!--Container-->
 {% endblock %}
