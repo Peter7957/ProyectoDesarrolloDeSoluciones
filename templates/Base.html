@@ -27,9 +27,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
+          <form id="Buscar"class="d-flex" method="POST" role="search" action="{% url 'buscar_productos' %}">
+            {% csrf_token %}
 
-          <form id="Buscar"class="d-flex" role="search" action="{% url 'buscar_productos' %}">
-            <input class="form-control me-5" type="search" placeholder="Buscar productos" aria-label="Search">
+            <input class="form-control me-5" type="search" placeholder="Buscar productos" aria-label="Search" name="query">
             <button class="btn btn-outline-success" type="submit"action="{% url 'buscar_productos' %}">Buscar</button>
           </form>  
 

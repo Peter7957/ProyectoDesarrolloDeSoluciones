@@ -2,27 +2,63 @@
 {% load static %}
 
 {% block content   %}
-    <table border>
-        <tr>
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>Marca</th>
-        <th>Precio</th>
-        <th>Imagen</th>
-        <th>Carrito</th>
-        <th>Comprar</th>
-        
-        </tr>
-        <tr>
-            <td>{{ producto.nombre }}</td>
-            <td>{{ producto.cantidad }}</td>
-            <td>{{ producto.marca }}</td>
-            <td>{{ producto.precio }}</td>
-            <td>
-                <img src="{{ producto.imagen.url }}" width="30px" height="30px">
-                
-            </td>
-        </tr>
-    </table>
+    <div class="container w-75">
+        <div class="d-flex">
+            <div class="w-50">
+                <img src="{{ producto.imagen.url }}" class="w-75">
+            </div>
+            <div class="w-50">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex flex-column justify-content-start">
+                        <p class="font-weight-bold">{{ producto.nombre }}</p>
+                        <br>
+                        <p>Stock :   {{ producto.cantidad }}</p>
+                        <br>
+                        <p>Marca :   {{ producto.marca }}</p>
+                        <br>
+                        <p>Precio:  $ {{ producto.precio }}</p>
+                    </div>
+                </div>
+                <div class="w-100 d-flex flex-column align-items-center " >
+                    <a href="{% url 'agregar_producto_carrito' producto_id=producto.id %}">
+                    <button class="btn btn-secondary m-2" style="width: 220px;">Carrito</button>
+                    </a>
+                    <a  href="{% url 'Pago' %}">
+                    <button class="btn btn-success m-2" style="width: 220px;">Pagar</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="my-5">
+            <p>{{ producto.descripcion }}</p>
+        </div>
+        <br>
+        <h2 class="text-center">Productos Relacionados</h2>
+        <br>
+        <div class="my-5 d-flex justify-content-around flex-wrap">
+        {% for r in relacion %}
+            <div class="card col-md-3 m-1 my-2">
+                <div class="w-100" style="min-height: 280px;">
+                <a href="{% url 'detalles' producto_id=r.id %}">
+                    <img src="{{ r.imagen.url }}" class="card-img-top " alt="{{ r.nombre }}">
+                </a>
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">{{ r.nombre }}</h5>
+                <p class="card-text">$ {{ r.precio }}</p>
+                <div class="d-flex w-100 justify-content-around align-bottom" style="height: 50px;">
+                    <a href="{% url 'agregar_producto_carrito' producto_id=r.id %}">
+                    <button class="btn btn-secondary" style="width: 90px;">Carrito</button>
+                    </a>
+                    <a href="{% url 'Pago' %}">
+                    <button class="btn btn-success" style="width: 90px;">Pagar</button>
+                    </a>
+                </div>
+                </div>
+            </div>
 
+            
+            {% endfor %}
+        </div>
+    </div>
 {% endblock  %}

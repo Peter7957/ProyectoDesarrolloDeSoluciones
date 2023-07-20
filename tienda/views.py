@@ -69,7 +69,11 @@ def detalles(request, producto_id):
     #INVESTIGAR ACERCA DE ESTA OPCION
     #producto = get_object_or_404(Producto, id=producto_id)
     producto = Producto.objects.get(id=producto_id)
-    data = {'producto' : producto}
+    marca = producto.marca
+    relacion = Producto.objects.filter(marca=marca)[:3]
+    data = {'producto' : producto,
+            'relacion' : relacion
+    }
     
     return render(request, "Producto/Detalles.html", data)
 
@@ -410,3 +414,27 @@ def actualizar_cantidad(request, item_id):
     else:
         item.delete()
     return redirect('carrito')
+
+def factura(request):
+    try:
+        carrito = Carrito.objects.get(usuario=request.user)
+    except Carrito.DoesNotExist:
+        carrito = None
+
+    if carrito is None:
+        carrito = Carrito.objects.create(usuario=request.user)
+
+
+    items_carrito = carrito.itemcarrito_set.all()
+
+    total = 0
+    for item in items_carrito:
+        subtotal = item.producto.precio * item.cantidad
+        total += subtotal
+
+    context = {
+        'items_carrito': items_carrito,
+        'total': total,
+    }
+
+    return render(request, 'Producto/Factura.html', context)

@@ -1,0 +1,32 @@
+
+{% extends '../Base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+    <div class="container d-flex flex-column align-items-center">
+        <h2>Factura de Compra</h2>
+
+    <table class="d-block">
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio unitario</th>
+            <th>Subtotal</th>
+        </tr>
+        {% for item in items_carrito %}
+        <tr>
+            <td>{{ item.producto.nombre }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>${{ item.producto.precio }}</td>
+            <td>${{ item.cantidad|mul:item.producto.precio }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p>Total: ${{ total }}</p>
+
+    <p>Titular de la tarjeta: {{ user }}</p>
+
+    </div>
+    
+    {% endblock %}
